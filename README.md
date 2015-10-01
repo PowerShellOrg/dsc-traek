@@ -1,8 +1,6 @@
-# Desired State Configuraiton (DSC) Pull Server
+# Desired State Configuraiton Pull Server
 
-DSC is a management platform that enables configuration of your environment at cloud speed and scale. Although DSC supports distributed management by pushing configurations to target nodes, in order to acheive cloud speed and scale a distributed central managment solution is required.
-
-The DSC Pull Server provides a central point of management for Powershell Desired State Configuration. It provides three primary functions: a **repository** for node configurations (mofs)and PowerShell modules containing DSC resources, **assignment** of node configurations to target nodes, **reporting**.
+Powershell Desired State Configuration (DSC) is a management platform that enables configuration of your environment at cloud speed and scale. Although DSC supports management by pushing configurations to target nodes, in order to acheive cloud speed and scale a distributed central managment solution is required. The DSC Pull Server provides this central management solution for DSC. It provides three primary functions: a **repository** for node configurations (mofs)and PowerShell modules containing DSC resources, **assignment** of node configurations to target nodes, **reporting**.
 
 The repository 
 
