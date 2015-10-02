@@ -12,7 +12,7 @@ Lastly once a target node is configured to pull node configurations from a pull 
 
 ## Quick Start
 ### Install
-<This needs to be defined>
+>This needs to be defined
 
 ### Configure Server
 
