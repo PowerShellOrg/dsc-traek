@@ -23,7 +23,7 @@ Lastly once a target node is configured to pull node configurations from a pull 
 
 
 # Community
-[DSC on Stack Exchange](http://stackoverflow.com/questions/tagged/dsc) 
+[DSC on Stack Exchange](http://stackoverflow.com/questions/tagged/dsc)    
 [DSC on Twitter](https://twitter.com/hashtag/PSDSC?src=hash)
 
 ## License
