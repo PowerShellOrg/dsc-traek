@@ -27,7 +27,7 @@ Lastly once a target node is configured to pull node configurations from a pull 
 [DSC on Twitter](https://twitter.com/hashtag/PSDSC?src=hash)
 
 ## License
-The DSC Pull Server is licensed under the MIT license.
+The DSC Pull Server is licensed under the MIT license.    
 [License](http://github.com/PowerShell/DSCPullServer/License)
 
 ## Contributing to DSC Pull Server
