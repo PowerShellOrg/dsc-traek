@@ -39,12 +39,12 @@ Run the following script on the server where you intend to install the DSC pull 
 >}
 >
 >
->Configuration V2PullServer 
->{ 
->    param( 
->            [Parameter(Mandatory)] 
->            [ValidateNotNullOrEmpty()] 
->            [string] $SSLCertThumbprint 
+Configuration V2PullServer 
+{ 
+    param( 
+            [Parameter(Mandatory)] 
+            [ValidateNotNullOrEmpty()] 
+            [string] $SSLCertThumbprint 
     ) 
 
      Import-DscResource -ModuleName xPsDesiredStateConfiguration
@@ -78,14 +78,14 @@ Run the following script on the server where you intend to install the DSC pull 
          } 
      } 
  } 
- 
- 
- $SSLCertFilePath = $SSLCertificatePath
- $SSLThumbprint = (Get-PfxCertificate -FilePath $SSLCertFilePath).Thumbprint 
-
- V2PullServer -SSLCertThumbprint $SSLThumbprint -OutputPath $OutputPath 
-
- Start-DscConfiguration -Path $OutputPath -Wait -Verbose
+>
+> 
+> $SSLCertFilePath = $SSLCertificatePath
+> $SSLThumbprint = (Get-PfxCertificate -FilePath $SSLCertFilePath).Thumbprint 
+>
+> V2PullServer -SSLCertThumbprint $SSLThumbprint -OutputPath $OutputPath 
+>
+> Start-DscConfiguration -Path $OutputPath -Wait -Verbose
 
 ### Configure Target Nodes
 
