@@ -16,7 +16,7 @@ Lastly once a target node is configured to pull node configurations from a pull 
 
 ### Configure Server
 Run the following script on the server where you intend to install the DSC pull perver. You will to pass a path to a .PFX file and a shared key into the script in order to properly configure the pull server to use SSL.
->
+```PowerShell
 param(
     [Parameter(Mandatory)] 
     [ValidateNotNullOrEmpty()]
@@ -86,7 +86,8 @@ Configuration V2PullServer
  V2PullServer -SSLCertThumbprint $SSLThumbprint -OutputPath $OutputPath 
 
  Start-DscConfiguration -Path $OutputPath -Wait -Verbose
->
+```
+
 ### Configure Target Nodes
 
 ### Publishing Configurations & Resources to Pull Server
