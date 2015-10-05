@@ -31,6 +31,5 @@ The DSC Pull Server is licensed under the MIT license.
 [License](http://github.com/PowerShell/DSCPullServer/License)
 
 ## Contributing
-Build status??
- 
+<Build status??>
 To learn how you can help make the DSC Pull Server a success visit [here](https://github.com/PowerShell/DSCPullServer/wiki).
