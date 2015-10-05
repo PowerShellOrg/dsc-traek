@@ -1,4 +1,4 @@
-# Desired State Configuraiton Pull Server
+# Desired State Configuration Pull Server
 
 Powershell Desired State Configuration (DSC) is a management platform that enables configuration of your environment at cloud speed and scale. Although DSC supports management by pushing configurations to target nodes, in order to acheive cloud speed and scale a central managment solution is required. [Azure Automation DSC](https://azure.microsoft.com/en-us/documentation/articles/automation-dsc-overview/) provides a solution for organizations with servers that have cloud access. This project provides a DSC Pull Server solution that can be installed on-premises. It provides three primary functions: a **repository** for node configurations (mofs)and PowerShell modules containing DSC resources, **assignment** of node configurations to target nodes, **reporting**.
 
@@ -15,7 +15,7 @@ Lastly once a target node is configured to pull node configurations from a pull 
 >This needs to be defined
 
 ### Configure Server
-Run the following script on the server where you intend to install the DSC pull perver. You will to pass a path to a .PFX file and a shared key into the script in order to properly configure the pull server to use SSL.
+The following script will fully install and configure the DSC pull perver. You will need to pass a path to a .PFX file and a shared key into the script in order to properly configure the pull server to use SSL and the new protocol with registration.
 ```PowerShell
 param(
     [Parameter(Mandatory)] 
@@ -89,6 +89,56 @@ Configuration V2PullServer
 ```
 
 ### Configure Target Nodes
+The following script will generate a meta-configuration. When applied to target nodes using the Set-DscLocalConfiguraitonManager cmdlet, will put them in pull mode and point them at your pull server. All configurations, resources and reporting will come from and go to the pull server.
+
+```PowerShell
+Parm(
+    [Parameter(Mandatory)] 
+    [ValidateNotNullOrEmpty()]
+    $PullServerURL, 
+    
+    [Parameter(Mandatory)] 
+    [ValidateNotNullOrEmpty()]
+    [string]
+    $SharedRegistrationKey, # Shared key (should be a GUID) to be used by target nodes to register with Pull Server
+    
+    $OutputPath = ".\"
+)
+
+[DscLocalConfigurationManager()]
+Configuration MetaConfig
+{
+    
+    Settings
+    {
+        RefreshMode          = 'Pull'
+        ConfigurationMode    = 'ApplyAndAutoCorrect'
+        ActionAfterReboot    = 'ContinueConfiguration'
+        RebootNodeIfNeeded   = $true
+    }
+
+    ConfigurationRepositoryWeb V2PullServer
+    {
+        ServerURL           = $PullServerURL
+        #ConfigurationNames = 'Basic.FileServer' # This can be used to bootstrap target node with configuration during registration
+        RegistrationKey     = $SharedRegistrationKey
+    }
+
+    ResourceRepositoryWeb V2PullServer
+    {
+        ServerURL         = $PullServerURL
+        RegistrationKey   = $SharedRegistrationKey
+    }
+
+    ReportServerWeb V2PullServer
+    {
+        ServerURL         = $PullServerURL
+        RegistrationKey   = $SharedRegistrationKey
+    }
+}
+
+MetaConfig -OutputPath $OutputPath
+```
 
 ### Publishing Configurations & Resources to Pull Server
 
