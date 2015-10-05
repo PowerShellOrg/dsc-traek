@@ -16,29 +16,29 @@ Lastly once a target node is configured to pull node configurations from a pull 
 
 ### Configure Server
 Run the following script on the server where you intend to install the DSC pull perver. You will to pass a path to a .PFX file and a shared key into the script in order to properly configure the pull server to use SSL.
+>
+param(
+    [Parameter(Mandatory)] 
+    [ValidateNotNullOrEmpty()]
+    $SSLCertificatePath, # Full path to SSL Certificate PFX file to be used by DSC Pull Server endpoint
 
->param(
->    [Parameter(Mandatory)] 
->    [ValidateNotNullOrEmpty()]
->    $SSLCertificatePath, # Full path to SSL Certificate PFX file to be used by DSC Pull Server endpoint
->
->    [Parameter(Mandatory)] 
->    [ValidateNotNullOrEmpty()]
->    [string]
->    $SharedRegistrationKey, # Shared key (should be a GUID) to be used by target nodes to register with Pull Server
->
->    $OutputPath = ".\"
->)
->
->#Get xPSDesiredStateConfiguration module
->$CurrentModule = Get-Module xPSDesiredStateConfiguration -ListAvailable
->
->if($CurrentModule -ne $null)
->{
->    Install-Module xPSDesiredStateConfiguration -Force
->}
->
->
+    [Parameter(Mandatory)] 
+    [ValidateNotNullOrEmpty()]
+    [string]
+    $SharedRegistrationKey, # Shared key (should be a GUID) to be used by target nodes to register with Pull Server
+
+    $OutputPath = ".\"
+)
+
+#Get xPSDesiredStateConfiguration module
+$CurrentModule = Get-Module xPSDesiredStateConfiguration -ListAvailable
+
+if($CurrentModule -ne $null)
+{
+    Install-Module xPSDesiredStateConfiguration -Force
+}
+
+
 Configuration V2PullServer 
 { 
     param( 
@@ -78,15 +78,15 @@ Configuration V2PullServer
          } 
      } 
  } 
->
-> 
-> $SSLCertFilePath = $SSLCertificatePath
-> $SSLThumbprint = (Get-PfxCertificate -FilePath $SSLCertFilePath).Thumbprint 
->
-> V2PullServer -SSLCertThumbprint $SSLThumbprint -OutputPath $OutputPath 
->
-> Start-DscConfiguration -Path $OutputPath -Wait -Verbose
 
+ 
+ $SSLCertFilePath = $SSLCertificatePath
+ $SSLThumbprint = (Get-PfxCertificate -FilePath $SSLCertFilePath).Thumbprint 
+
+ V2PullServer -SSLCertThumbprint $SSLThumbprint -OutputPath $OutputPath 
+
+ Start-DscConfiguration -Path $OutputPath -Wait -Verbose
+>
 ### Configure Target Nodes
 
 ### Publishing Configurations & Resources to Pull Server
