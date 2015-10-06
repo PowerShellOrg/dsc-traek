@@ -12,6 +12,7 @@ Lastly once a target node is configured to pull node configurations from a pull 
 
 ## Quick Start
 ### Install
+
 ```PowerShell
 
 ```
@@ -36,6 +37,9 @@ The following script will generate a meta-configuration. When applied to target 
 
 ### Publish Configurations & Resources
 
+```PowerShell
+
+```
 
 # Community
 [DSC on Stack Exchange](http://stackoverflow.com/questions/tagged/dsc)    
