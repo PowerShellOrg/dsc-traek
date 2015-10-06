@@ -34,7 +34,7 @@ The following script will generate a meta-configuration. When applied to target 
 
 ```
 
-### Publishing Configurations & Resources to Pull Server
+### Publish Configurations & Resources
 
 
 # Community
