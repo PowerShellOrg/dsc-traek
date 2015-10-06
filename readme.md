@@ -11,13 +11,8 @@ Lastly once a target node is configured to pull node configurations from a pull 
 [About Powershell DSC](https://technet.microsoft.com/en-us/library/dn249912.aspx)
 
 ## Quick Start
-### Install
 
-```PowerShell
-
-```
-
-### Configure Server
+### Install & Configure Pull Server
 To fully install and configure the pull server use the Assert-DscPullServer.ps1 script in the tools directory of this repo. Before running the following commands, copy your SSL certificate PF file to the computer that will become your DSC pull server. In the below example, I copied 'Fabricam_SSL.pfx' to 'C:\Configs\Certs\' on the pull server. Next generate a GUID to use as the shared secret that will be used by target nodes during registration. Keep this shared secret in a safe place as it will allow any target node to register with your pull server. The following PowerShell command will generate a GUID that can be used as the shared secret:
 
 ```PowerShell
