@@ -22,7 +22,7 @@ To fully install and configure the pull server use the Assert-DscPullServer.ps1 
 ```PowerShell
 [GUID]::NewGuid()
 ```
-Finally run the script passing in the SSL cert path, GUID and output path to install and configure the pull server as follows:
+Finally run the 'Assert-DscPullServer.ps1' script passing in the SSL cert path, GUID and output path to install and configure the pull server as follows:
 ```PowerShell
     Assert-DscPullServer.ps1 -SSLCertificatePath 'C:\Configs\Certs\Fabricam_SSL.pfx' -SharedRegistrationKey '1de7d9f9-b26f-465a-9e5b-5c2fe60ff1b0' -OutputPath 'C:\Configs\Pull\'
 ```
