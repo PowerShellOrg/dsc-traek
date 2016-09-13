@@ -106,9 +106,10 @@ function roundRobin(targets, index){
 
 //Direct traffic to registration targets
 //secure: false is being used to allow for self signed certs. This should be removed in production.
+//TODO: handle moving to next proxy if one fails.
 proxyApp.all(getActionPath, function(req, res){
     var nextTarget = roundRobin(config.proxyTargets.orchestration,'orchestration');
-    proxy.web(req, res, {target: nextTarget, secure:false});
+    //proxy.web(req, res, {target: nextTarget, secure:false});
 });
 
 proxyApp.all([registrationPath,'/regkeys'], function(req, res){

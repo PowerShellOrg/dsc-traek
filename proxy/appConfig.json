@@ -6,8 +6,7 @@
     },
     "proxyTargets":{
         "registration":[
-            "https://dscNode:4443",
-            "https://dscNode:4543"
+            "https://dscNode:4443"
         ],
         "orchestration":[
             "https://dscNode:5443"

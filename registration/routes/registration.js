@@ -113,11 +113,10 @@ router.put(registrationPath, function(req, res, next) {
 
       if (req.headers.authorization === `Shared ${authCodePrim}` || req.headers.authorization === `Shared ${authCodeSecond}`)
       {
-        //Write information (agentId, registrationInfo) to DB
+        //Write information (agentId, registrationInfo, Configurations, & Cert info) to DB
         console.log(req.params.id);
         if(req.params.id){
-          //TODO: need to save certificate information as well
-          dataStore.setAgent(req.params.id, req.body.AgentInformation, function(err){
+          dataStore.setAgent(req.params.id, req.body, function(err){
             if(err){
               console.log(`Error occured while registering node with agent ID (${req.id}). Error details are as follows: ${err}. `);
               responseCode = 400;

@@ -18,7 +18,9 @@ var sharedKeySchema = mongoose.Schema({
 // Schema for Agents
 var agentSchema = mongoose.Schema({
     agentId: {index: true, type: String},
-    registrationInfo: {}
+    nodeInfo: {},
+    configurations: [String],
+    certificate:{}
 });
 
 //Sets the shared keys that will be used by nodes to register with this server
@@ -59,25 +61,29 @@ exports.getSharedKey = function (callback){
             console.log(err);
         }
         else{
-            console.log(sharedkeys);
             callback(sharedkeys);
         }
     });
 };
 
 //Saves registration information about a node with this server
-//TODO: save certificate information as well
-exports.setAgent = function (agentId, registrationInfo, callback){
+
+exports.setAgent = function (agentId, agentInfo, callback){
     var agent = mongoose.model('Agent', agentSchema);
 
     agent.findOne({'agentId':agentId},function(err, node){
         if(!node){
-            node = new agent({'agentId':agentId, 'registrationInfo':registrationInfo});
+            node = new agent({'agentId':agentId, 'nodeInfo':agentInfo.AgentInformation, 
+                              'configurations':agentInfo.ConfigurationNames, 
+                              'certificate':agentInfo.RegistrationInformation.CertificateInformation
+                            });
         }
         else
         {
-            node.agentId = agentId;
-            node.registrationInfo = registrationInfo;
+            //node.agentId = agentId; // since finding by agentId this will never do anything
+            node.nodeInfo = agentInfo.AgentInformation;
+            node.configurations = agentInfo.ConfigurationNames;
+            node.certificate = agentInfo.RegistrationInformation.CertificateInformation;
         }
 
         node.save(function(saveErr){
