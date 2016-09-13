@@ -1,0 +1,22 @@
+{
+    "port":"8443",
+    "certPaths":{
+        "privateKey":"/data/certs/key.pem",
+        "publicKey":"/data/certs/certificate.pem"
+    },
+    "proxyTargets":{
+        "registration":[
+            "https://dscNode:4443",
+            "https://dscNode:4543"
+        ],
+        "orchestration":[
+            "https://dscNode:5443"
+        ],
+        "psModule":[
+            "https://dscNode:6443"
+        ],
+        "configuration":[
+            "https://dscNode:7443"
+        ]
+    }
+}

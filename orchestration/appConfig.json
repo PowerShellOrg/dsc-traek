@@ -1,0 +1,9 @@
+{
+    "ipaddress":"",
+    "port":"8443",
+    "certPaths":{
+        "privateKey":"/data/certs/key.pem",
+        "publicKey":"/data/certs/certificate.pem"
+    },
+    "dataStore":"mongoStore"
+}
