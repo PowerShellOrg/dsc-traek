@@ -1,18 +1,17 @@
 var express = require('express');
-var nodes = require('./routes/nodes');
+var crypto = require('crypto');
+var nodes = require('./routes/getConfig');
 var bodyParser = require('body-parser');
 var fs = require('fs');
-var http = require('http');
 var https = require('https');
-
-//var logger = require('morgan');
+var morgan = require('morgan');
 
 var app = express();
 
 var privateKey = fs.readFileSync('/data/certs/key.pem');
 var sslCert = fs.readFileSync('/data/certs/certificate.pem');
 
-//app.use(logger('dev'));
+app.use(morgan('combined'));
 
 app.use(function(req, res, next){
     console.log(req.url);

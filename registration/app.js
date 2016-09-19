@@ -6,7 +6,7 @@ var regRouter = require('./routes/registration');
 var fs = require('fs');
 var path = require('path');
 var https = require('https');  // Only support HTTPS
-//var logger = require('morgan'); //TODO: Add at some point
+var morgan = require('morgan');
 
 // load application configuration from file
 var configPath = path.join(__dirname,'appConfig.json');
@@ -26,8 +26,8 @@ var sslCert = fs.readFileSync(config.certPaths.publicKey);
 
 var app = express();
 
-//set configuration read from appConfig.json so info can be used in router.
-//app.set('config',config);
+app.use(morgan('combined'));
+
 app.locals.config = config;
 
 app.use(bodyParser.urlencoded({extended: true}));

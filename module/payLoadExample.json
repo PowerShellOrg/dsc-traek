@@ -1,0 +1,7 @@
+//HTTP Get: Modules(ModuleName={moduleName},ModuleVersion={moduleVersion})/ModuleContent
+
+//receive
+none
+
+//respond
+blob

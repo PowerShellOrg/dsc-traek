@@ -9,6 +9,7 @@ var registrationPath = '/Nodes\\(AgentId=\':id\'\\)';
 var dataStore;
 
 //Load some initial variables
+//TODO: This should be done in the app so it only happens when the app is loaded. The routes can the reference the datastore from locals.
 router.use('/',function(req, res, next){
   //get the app config json data that was read and stored in the app 
   var config = req.app.locals.config;
@@ -28,29 +29,29 @@ router.use('/',function(req, res, next){
 });
 
 // Log information for any request made to the server
-router.use('/', function(req, res, next){
-  console.log(`
-                ***********************************
-                Logging information about request...
+// router.use('/', function(req, res, next){
+//   console.log(`
+//                 ***********************************
+//                 Logging information about request...
 
-                request url:        ${req.url}
-                requst method:      ${req.method}
-                request header:     ${JSON.stringify(req.headers)}
-                request body:       ${JSON.stringify(req.body)}
-                request host name:  ${req.hostname}
-                request IP Address: ${req.ip}
-                request trailers:   ${JSON.stringify(req.trailers)}
-                request Cookie:     ${JSON.stringify(req.cookies)}
-                request parameters: ${JSON.stringify(req.params)}
-                request query:      ${JSON.stringify(req.query)}
-                request raw Header: ${req.rawHeaders}
-                request statuscode: ${req.statusCode}
-                reqest statusmesg:  ${req.statusMessage}
-                request cert:       ${JSON.stringify(req.connection.getPeerCertificate())}
-                *********************************************
-  `);
-  next();
-});
+//                 request url:        ${req.url}
+//                 requst method:      ${req.method}
+//                 request header:     ${JSON.stringify(req.headers)}
+//                 request body:       ${JSON.stringify(req.body)}
+//                 request host name:  ${req.hostname}
+//                 request IP Address: ${req.ip}
+//                 request trailers:   ${JSON.stringify(req.trailers)}
+//                 request Cookie:     ${JSON.stringify(req.cookies)}
+//                 request parameters: ${JSON.stringify(req.params)}
+//                 request query:      ${JSON.stringify(req.query)}
+//                 request raw Header: ${req.rawHeaders}
+//                 request statuscode: ${req.statusCode}
+//                 reqest statusmesg:  ${req.statusMessage}
+//                 request cert:       ${JSON.stringify(req.connection.getPeerCertificate())}
+//                 *********************************************
+//   `);
+//   next();
+// });
 
 //Add ProtocolVersion to header
 router.use('/', function(req, res, next){
@@ -95,11 +96,22 @@ router.get('/regkeys',function(req, res, next){
   
 });
 
-router.get(registrationPath, function(req, res, next) {
-  // check whether or not agent is registrationed. Return 200 if found and 404 if not.
-  // This should restricted in some way so that everyone cannot call this to hack the system.
-  var responseCode = 200;
-  
+// check whether or not agent is registered. Return 200 if found and 404 if not.
+// This should restricted in some way so that everyone cannot call this to hack the system.
+router.put('/validateAgent', function(req, res) {
+  //Validate Agent ID exists & certi is valid
+
+  dataStore.validate(req.body.agentId, req.body.certificate,function(valid){
+    console.log(`Result from cert valiation: ${valid}`);
+    if(valid){
+      res.sendStatus(200).end();
+    }
+    else
+    {
+      console.log(`Could not validate Agent with ID of ${req.body.agentId}.`);
+      res.sendStatus(404).end();
+    }
+  });
 
 });
 

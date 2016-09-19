@@ -1,0 +1,13 @@
+//HTTP GET: Nodes(AgentId={AgentId})/Configurations(ConfigurationName={ConfigurationName})/ConfigurationContent
+
+//recieve
+none
+
+//respond
+//header
+{
+    "ProtocolVersion":"2.0",
+    "Checksum":"{Hash}",
+    "ChecksumAlgorithm":"SHA-256"
+}
+blob

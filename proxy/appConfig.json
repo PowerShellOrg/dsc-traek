@@ -5,10 +5,13 @@
         "publicKey":"/data/certs/certificate.pem"
     },
     "proxyTargets":{
+        "reporting":[
+            "https://dscNode:3443"
+        ],
         "registration":[
             "https://dscNode:4443"
         ],
-        "orchestration":[
+        "getAction":[
             "https://dscNode:5443"
         ],
         "psModule":[

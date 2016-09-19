@@ -4,7 +4,7 @@
 
 const REGKEYDBID = "e9364206-c1bf-4916-af8c-8a04c8dc28c7";   //unique key to represent registration keys. This does not need to be changed.
 var mongoose = require('mongoose');
-var dbHost = 'mongodb://localhost/dscServer1';
+var dbHost = 'mongodb://localhost/DscRegistration';
 
 mongoose.connect(dbHost);
 
@@ -95,17 +95,36 @@ exports.setAgent = function (agentId, agentInfo, callback){
 };
 
 //Validates whether or not a node is already registered with this server
-//This can be used by other microservices to validate Agent is already registered before processing requests
-exports.validate = function (agentId){
-    agent.findOne({'agentId':agentId},function(err, node){
-        if(agent){
-            console.log(`Found agent with id of ${agentId} in the datastore.`);
-            return true;
-        }
-        else
+//This will be used by other microservices to validate Agent is already registered before processing requests
+exports.validate = function (agentId, certificate, callback){
+    var agent = mongoose.model('Agent', agentSchema);
+    console.log(`Agent ID: ${agentId}`);
+    console.log(`Certificate: ${certificate}`);
+
+    agent.findOne({'agentId':agentId}, function(err, node){
+        var result = false;
+
+        if(err)
         {
-            console.log(`Agent with id of ${agentId} was NOT found in the datastore.`);
-            return false;
+            console.log(`The following error occured while trying to find agent ${agentId}: ${err}.`);
         }
+
+        //Validate that AgentID exists.
+        if(!err && node){
+            //Validate certificate thumprint matches
+            var clientCert = certificate.fingerprint.split(":").join("");
+            console.log(`cert from DB: ${node.certificate.Thumbprint}
+                         Cert from client: ${certificate.fingerprint}
+                         Cert reformat: ${clientCert}`); //Will this be the same for every cert???
+            
+            if(node.certificate.Thumbprint === clientCert)
+            { 
+                result = true ;
+            }
+            
+            //TODO: Validate additional certificate properties
+            
+        }
+        callback(result);
     });    
 };

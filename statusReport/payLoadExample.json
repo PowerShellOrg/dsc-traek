@@ -1,0 +1,22 @@
+//HTTP POST: Nodes(AgentID={AgentId})/SendReport
+
+//receive
+{
+    "JobId": "{UUID}",
+    "OperationType": "Initial",
+    "RefreshMode": "Pull",
+    "Status": "Success",
+    "LCMVersion": "2.0",
+    "ReportFormatVersion": "2.0",
+    "ConfigurationVersion": "1.0.3.6",
+    "NodeName": "myPC",
+    "IpAddress": "1.1.1.1",
+    "StartTime": "1pm",
+    "EndTime": "1:02pm",
+    "RebootRequested": "False",
+    "Errors": [],
+    "StatusData": [{"":""},{"":""}]
+}
+
+//respond: 200 - Success, 400 - Bad request, 401 - Unauthorized, 404 - not found
+none

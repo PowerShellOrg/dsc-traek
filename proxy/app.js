@@ -5,22 +5,28 @@ var proxyApp = express();
 var https = require('https');
 var path = require('path');
 var fs = require('fs');
+var proxyUtil = require('./bin/proxyUtil');
+var morgan = require('morgan');
 
 var registrationPath = '/Nodes\\(AgentId=\':id\'\\)'; 
 var getActionPath = `${registrationPath}/GetDscAction`;
+var getConfigPath = `${registrationPath}/Configurations\\(ConfigurationName=:configName\\)/ConfigurationContent`;;
+var getModulePath = '/Modules\\(ModuleName=:moduleName,ModuleVersion=:moduleVersion\\)/ModuleContent';
+var reportPath = `${registrationPath}/SendReport`;
 
 var httpProxy = require('http-proxy');
 var proxy = httpProxy.createProxyServer({});
 
 // track indexes application wide for each set of targets for round robin distribution.
 var registrationIndex;
-var orchestrationIndex;
+var getActionIndex;
 var moduleIndex;
 var configurationIndex;
+var reportingIndex;
 
 // load application configuration from file
 var configPath = path.join(__dirname,'appConfig.json');
-var config;
+var config; 
 
 if(fs.existsSync(configPath)){
     var configContents = fs.readFileSync(configPath);
@@ -34,99 +40,58 @@ if(fs.existsSync(configPath)){
 var privateKey = fs.readFileSync(config.certPaths.privateKey);
 var sslCert = fs.readFileSync(config.certPaths.publicKey);
 
-//functions to assit with selecting proxy targets
-function randomTarget(targets){
-    
-    var target;
-    
-    if(targets.length > 1 )
-    {
-        var i = Math.floor(Math.random() * (targets.length - 1));
-        target = targets[i];
-    }
-    else
-    {
-        target = targets;
-    }
-    
-    return target;
-}
-
-function roundRobin(targets, index){
-    var target;
-
-    switch (index) {
-        case 'registration':
-            if(isNaN(registrationIndex) || registrationIndex === (targets.length - 1)){
-                registrationIndex = 0;
-            }
-            else
-            {
-                registrationIndex += 1;
-            }
-            target = targets[registrationIndex];
-            break;
-
-        case 'orchestration':
-            if(isNaN(orchestrationIndex) || orchestrationIndex === (targets.length - 1)){
-                orchestrationIndex = 0;
-            }
-            else
-            {
-                orchestrationIndex += 1;
-            }
-            target = targets[orchestrationIndex];
-            break;
-
-        case 'module':
-            if(isNaN(moduleIndex) || moduleIndex === (targets.length - 1)){
-                moduleIndex = 0;
-            }
-            else
-            {
-                moduleIndex += 1;
-            }
-            target = targets[moduleIndex];    
-            break;
-
-        case 'configuration':
-            if(isNaN(configurationIndex) || configurationIndex === (targets.length - 1)){
-                configurationIndex = 0;
-            }
-            else
-            {
-                configurationIndex += 1;
-            }
-            target = targets[configurationIndex];    
-            break;
-    }
-
-    return target;
-}
+proxyApp.use(morgan('combined'));
 
 //Direct traffic to registration targets
 //secure: false is being used to allow for self signed certs. This should be removed in production.
 //TODO: handle moving to next proxy if one fails.
 proxyApp.all(getActionPath, function(req, res){
-    var nextTarget = roundRobin(config.proxyTargets.orchestration,'orchestration');
-    //proxy.web(req, res, {target: nextTarget, secure:false});
+    var nextTarget = proxyUtil.roundRobin(config.proxyTargets.getAction,getActionIndex);
+    var regTarget = proxyUtil.randomTarget(config.proxyTargets.registration);
+
+    console.log(`nextTarget to be used to fulfill getAction request is ${nextTarget}.`);
+    console.log(`regTarget to be used to check registration is ${regTarget}.`);
+
+    proxyUtil.clientValidation(req.params.id, req.connection.getPeerCertificate(), regTarget, function(valid){
+        if(valid)
+        {
+            console.log(`Successfully validated client cert.`);
+            proxy.web(req, res, {target: nextTarget, secure:false}); 
+        }
+        else
+        {
+            res.sendStatus(404).end();
+        }
+    });
+
+    proxy.on('error', function(err, req, res){
+        console.log(`Failed to connect to proxy`);
+    });
 });
 
+proxyApp.all(reportPath, function(req, res){
+    var nextTarget = proxyUtil.roundRobin(config.proxyTargets.reporting, reportingIndex);
+    console.log(`Routing ${req.path} to next target: ${nextTarget}.`);
+    proxy.web(req, res, {target: nextTarget, secure:false});
+}); 
+
 proxyApp.all([registrationPath,'/regkeys'], function(req, res){
-    var nextTarget = roundRobin(config.proxyTargets.registration,'registration');
+    var nextTarget = proxyUtil.roundRobin(config.proxyTargets.registration,registrationIndex);
     console.log(`Routing ${req.path} to next target: ${nextTarget}.`);
     proxy.web(req, res, {target:nextTarget, secure:false});
 });
 
-proxyApp.all('/tres', function(req, res){
-    var nextTarget = roundRobin(config.proxyTargets.psModule,'module');
+proxyApp.all(getConfigPath, function(req, res){
+    var nextTarget = proxyUtil.roundRobin(config.proxyTargets.psModule,moduleIndex);
+    console.log(`Routing ${req.path} to next target: ${nextTarget}.`);
     proxy.web(req, res, {target: nextTarget, secure:false});
 });
 
-proxyApp.all('/tres', function(req, res){
-    var nextTarget = roundRobin(config.proxyTargets.configuration, 'configuration');
+proxyApp.all(getModulePath, function(req, res){
+    var nextTarget = proxyUtil.roundRobin(config.proxyTargets.configuration, configurationIndex);
+    console.log(`Routing ${req.path} to next target: ${nextTarget}.`);
     proxy.web(req, res, {target: nextTarget, secure:false});
-});
+}); 
 
 
 https.createServer(
