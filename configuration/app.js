@@ -4,14 +4,12 @@ var nodes = require('./routes/getConfig');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var https = require('https');
-var morgan = require('morgan');
+var morgan = require('winston');
 
 var app = express();
 
 var privateKey = fs.readFileSync('/data/certs/key.pem');
 var sslCert = fs.readFileSync('/data/certs/certificate.pem');
-
-app.use(morgan('combined'));
 
 app.use(function(req, res, next){
     console.log(req.url);

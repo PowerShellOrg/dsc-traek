@@ -4,8 +4,7 @@ var bodyParser = require('body-parser');
 var fs = require('fs');
 var http = require('http');
 var https = require('https');
-
-//var logger = require('morgan');
+var logger = require('winston');
 
 var app = express();
 

@@ -6,7 +6,7 @@ var getAction = require('./routes/getAction');
 var fs = require('fs');
 var path = require('path');
 var https = require('https');  // Only support HTTPS
-var morgan = require('morgan');
+var logger = require('winston');
 
 // load application configuration from file
 var configPath = path.join(__dirname,'appConfig.json');
@@ -15,7 +15,7 @@ var config;
 if(fs.existsSync(configPath)){
     var configContents = fs.readFileSync(configPath);
     config = JSON.parse(configContents);
-    console.log(`Application configuration loaded for Orchestration Module from ${configPath}.`);
+    console.log(`Application configuration loaded for getAction Module from ${configPath}.`);
 }else{
     throw 'Configuration file not found.';
 }
@@ -25,8 +25,6 @@ var privateKey = fs.readFileSync(config.certPaths.privateKey);
 var sslCert = fs.readFileSync(config.certPaths.publicKey);
 
 var app = express();
-
-app.use(morgan('combined'));
 
 app.locals.config = config;
 

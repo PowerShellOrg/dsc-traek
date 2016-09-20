@@ -6,7 +6,7 @@ var https = require('https');
 var path = require('path');
 var fs = require('fs');
 var proxyUtil = require('./bin/proxyUtil');
-var morgan = require('morgan');
+var logger = require('winston');
 
 var registrationPath = '/Nodes\\(AgentId=\':id\'\\)'; 
 var getActionPath = `${registrationPath}/GetDscAction`;
@@ -39,8 +39,6 @@ if(fs.existsSync(configPath)){
 // load web certificates
 var privateKey = fs.readFileSync(config.certPaths.privateKey);
 var sslCert = fs.readFileSync(config.certPaths.publicKey);
-
-proxyApp.use(morgan('combined'));
 
 //Direct traffic to registration targets
 //secure: false is being used to allow for self signed certs. This should be removed in production.
