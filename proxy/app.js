@@ -24,6 +24,11 @@ var moduleIndex;
 var configurationIndex;
 var reportingIndex;
 
+//Set up logging
+logger.remove(logger.transports.Console);
+logger.add(logger.transports.Console,{timestamp:true, colorize:true});
+logger.add(logger.transport.Console,{timestamp:true,colorize:true,level:debug});
+
 // load application configuration from file
 var configPath = path.join(__dirname,'appConfig.json');
 var config; 
@@ -40,55 +45,61 @@ if(fs.existsSync(configPath)){
 var privateKey = fs.readFileSync(config.certPaths.privateKey);
 var sslCert = fs.readFileSync(config.certPaths.publicKey);
 
-//Direct traffic to registration targets
-//secure: false is being used to allow for self signed certs. This should be removed in production.
-//TODO: handle moving to next proxy if one fails.
+//Make logger available to all modules in app.
+proxyApp.locals.logger = logger;
+
+//TODO: handle moving to next proxy if one fails.????
 proxyApp.all(getActionPath, function(req, res){
     var nextTarget = proxyUtil.roundRobin(config.proxyTargets.getAction,getActionIndex);
     var regTarget = proxyUtil.randomTarget(config.proxyTargets.registration);
 
-    console.log(`nextTarget to be used to fulfill getAction request is ${nextTarget}.`);
-    console.log(`regTarget to be used to check registration is ${regTarget}.`);
+    logger.debug(`nextTarget to be used to fulfill getAction request is ${nextTarget}.`);
+    logger.debug(`regTarget to be used to check registration is ${regTarget}.`);
 
+    logger.info('Validating agent ID and certificate.');
     proxyUtil.clientValidation(req.params.id, req.connection.getPeerCertificate(), regTarget, function(valid){
         if(valid)
         {
-            console.log(`Successfully validated client cert.`);
-            proxy.web(req, res, {target: nextTarget, secure:false}); 
+            logger.info(`Successfully validated client agent ID and cert.`);
+            proxy.web(req, res, {target: nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.
         }
         else
         {
+            logger.info('Failed to validate client agent ID and Cert.');
             res.sendStatus(404).end();
         }
     });
 
     proxy.on('error', function(err, req, res){
-        console.log(`Failed to connect to proxy`);
+        logger.warn(`Failed to connect to proxy!`);
     });
 });
 
 proxyApp.all(reportPath, function(req, res){
     var nextTarget = proxyUtil.roundRobin(config.proxyTargets.reporting, reportingIndex);
-    console.log(`Routing ${req.path} to next target: ${nextTarget}.`);
-    proxy.web(req, res, {target: nextTarget, secure:false});
+    logger.info(`Routing ${req.path} to next target: ${nextTarget}.`);
+    proxy.web(req, res, {target: nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.
 }); 
 
 proxyApp.all([registrationPath,'/regkeys'], function(req, res){
     var nextTarget = proxyUtil.roundRobin(config.proxyTargets.registration,registrationIndex);
-    console.log(`Routing ${req.path} to next target: ${nextTarget}.`);
-    proxy.web(req, res, {target:nextTarget, secure:false});
+
+    logger.info(`Routing ${req.path} to next target: ${nextTarget}.`);
+    proxy.web(req, res, {target:nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.
 });
 
 proxyApp.all(getConfigPath, function(req, res){
     var nextTarget = proxyUtil.roundRobin(config.proxyTargets.psModule,moduleIndex);
-    console.log(`Routing ${req.path} to next target: ${nextTarget}.`);
-    proxy.web(req, res, {target: nextTarget, secure:false});
+
+    logger.info(`Routing ${req.path} to next target: ${nextTarget}.`);
+    proxy.web(req, res, {target: nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.
 });
 
 proxyApp.all(getModulePath, function(req, res){
     var nextTarget = proxyUtil.roundRobin(config.proxyTargets.configuration, configurationIndex);
-    console.log(`Routing ${req.path} to next target: ${nextTarget}.`);
-    proxy.web(req, res, {target: nextTarget, secure:false});
+
+    logger.info(`Routing ${req.path} to next target: ${nextTarget}.`);
+    proxy.web(req, res, {target: nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.
 }); 
 
 
@@ -98,5 +109,5 @@ https.createServer(
         requestCert: true, 
         rejectUnauthorized: false  // validation of certificate done by app since no Certificate Authority is used
     },proxyApp).listen(config.port,function(req, res){
-    console.log(`Proxy listening for HTTPS traffic on port ${config.port}.\n`);
+    logger.info(`Proxy listening for HTTPS traffic on port ${config.port}.\n`);
 });

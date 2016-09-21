@@ -1,6 +1,8 @@
 /* jshint esnext: true */
 var https = require('https');
 
+// TODO: how do I use logger information from app in these modules??
+
 //functions to assit with selecting proxy targets
 exports.randomTarget = function(targets){
     
@@ -35,8 +37,6 @@ exports.roundRobin = function(targets, index){
 exports.clientValidation = function(agentId, cert, targetHost, callback){
   //Validate node is registered and is using a valid cert
   //expected targetHost format: http://reg.contoso.com:6780
-
-  console.log(`Validating ID and Certificate for ${agentId}.`);
 
   var options = {
       host: targetHost.toString().split(':')[1].replace('//',''),

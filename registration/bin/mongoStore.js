@@ -1,6 +1,7 @@
 /* jshint esnext: true */
 // This module defines how registration data is written and read.
 // This implementation uses MongoDB 
+// TODO: how do I use logger information from app in these modules??
 
 const REGKEYDBID = "e9364206-c1bf-4916-af8c-8a04c8dc28c7";   //unique key to represent registration keys. This does not need to be changed.
 var mongoose = require('mongoose');
