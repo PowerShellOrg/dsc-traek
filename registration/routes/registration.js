@@ -3,6 +3,8 @@ var express = require('express');
 var crypto = require('crypto');
 var fs = require('fs');
 var path = require('path');
+var logger = require('winston');
+
 var router = express.Router();
 var signature = require('../bin/register');
 var registrationPath = '/Nodes\\(AgentId=\':id\'\\)'; 
@@ -31,7 +33,6 @@ router.use('/',function(req, res, next){
 
 //Log information for any request made to the server
 router.use('/', function(req, res, next){
-  var logger = req.app.locals.logger;
   logger.debug(`
                 ***********************************
                 Logging information about request...

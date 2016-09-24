@@ -10,8 +10,7 @@ var logger = require('winston');
 
 //Set up logging
 logger.remove(logger.transports.Console);
-logger.add(logger.transports.Console,{timestamp:true, colorize:true});
-logger.add(logger.transport.Console,{timestamp:true,colorize:true,level:debug});
+logger.add(logger.transports.Console,{timestamp:true,colorize:true,level:'debug'});
 
 // load application configuration from file
 var configPath = path.join(__dirname,'appConfig.json');
@@ -32,7 +31,6 @@ var sslCert = fs.readFileSync(config.certPaths.publicKey);
 var app = express();
 
 app.locals.config = config;
-app.locals.logger = logger;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({strict: false, type: '*/*'}));

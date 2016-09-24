@@ -1,7 +1,6 @@
 /* jshint esnext: true */
 var https = require('https');
-
-// TODO: how do I use logger information from app in these modules??
+var logger = require('winston');
 
 //functions to assit with selecting proxy targets
 exports.randomTarget = function(targets){
@@ -59,7 +58,7 @@ exports.clientValidation = function(agentId, cert, targetHost, callback){
 
       res.on('end',function(){
           //data = Buffer.concat(data).toString();
-          console.log(`response from validation: ${data} 
+          logger.debug(`response from validation: ${data} 
                     response code: ${res.statusCode}`);
           if(res.statusCode === 404)
           {
@@ -79,6 +78,6 @@ exports.clientValidation = function(agentId, cert, targetHost, callback){
   req.end(reqbody);
 
   req.on('error',function(err){
-        console.log(`Attempt to validate Agent failed with error: ${err}`);
+        logger.info(`Attempt to validate Agent failed with error: ${err}`);
     });
 };

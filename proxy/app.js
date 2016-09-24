@@ -26,8 +26,7 @@ var reportingIndex;
 
 //Set up logging
 logger.remove(logger.transports.Console);
-logger.add(logger.transports.Console,{timestamp:true, colorize:true});
-logger.add(logger.transport.Console,{timestamp:true,colorize:true,level:debug});
+logger.add(logger.transports.Console,{timestamp:true,colorize:true,level:'debug'});
 
 // load application configuration from file
 var configPath = path.join(__dirname,'appConfig.json');
@@ -36,7 +35,7 @@ var config;
 if(fs.existsSync(configPath)){
     var configContents = fs.readFileSync(configPath);
     config = JSON.parse(configContents);
-    console.log(`Application configuration loaded for Proxy Module from ${configPath}.`);
+    logger.debug(`Application configuration loaded for Proxy Module from ${configPath}.`);
 }else{
     throw 'Configuration file not found.';
 }
@@ -44,9 +43,6 @@ if(fs.existsSync(configPath)){
 // load web certificates
 var privateKey = fs.readFileSync(config.certPaths.privateKey);
 var sslCert = fs.readFileSync(config.certPaths.publicKey);
-
-//Make logger available to all modules in app.
-proxyApp.locals.logger = logger;
 
 //TODO: handle moving to next proxy if one fails.????
 proxyApp.all(getActionPath, function(req, res){

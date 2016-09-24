@@ -1,13 +1,14 @@
 /* jshint esnext: true */
 var express = require('express');
 var actions = require('../bin/getAction');
+var logger = require('winston');
+
 var router = express.Router();
 
 var getActionPath = `/Nodes\\(AgentId=\':id\'\\)/GetDscAction`;
 
 //Log information for any request made to the server
 router.use('/', function(req, res, next){
-  var logger = req.app.locals.logger;
   logger.debug(`
                 ***********************************
                 Logging information about request...
@@ -40,8 +41,6 @@ router.get('/',function(req, res, next){
 //req should be in the following format: {"ClientStatus":[{"Checksum""ChecksumAlgorithm""ConfigurationName"}]}
 //res should be in the following format: {"NodeStatus":"","Details":[{"ConfigurationName","Status"}]}
 router.post(getActionPath, function(req, res, next) {
-  var logger = req.app.locals.logger;
-
   //compare checksums sent with current - the current should be queried from configuration service.
     
   
@@ -50,7 +49,7 @@ router.post(getActionPath, function(req, res, next) {
   res.header('Content-Type','application/json');
   res.header('ProtocolVersion','2.0');
   res.statusCode = 200;
-  res.write(`{"NodeStatus":"GetConfiguration","Details":["ConfigurationName":"WebServer","Status":"GetConfiguration"]}`);
+  res.write(`{"NodeStatus":"GetConfiguration","Details":[{"ConfigurationName":"WebServer","Status":"GetConfiguration"}]}`);
   res.end();
 });
 

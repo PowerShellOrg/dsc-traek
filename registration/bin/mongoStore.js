@@ -1,10 +1,10 @@
 /* jshint esnext: true */
 // This module defines how registration data is written and read.
 // This implementation uses MongoDB 
-// TODO: how do I use logger information from app in these modules??
+var logger = require('winston');
+var mongoose = require('mongoose');
 
 const REGKEYDBID = "e9364206-c1bf-4916-af8c-8a04c8dc28c7";   //unique key to represent registration keys. This does not need to be changed.
-var mongoose = require('mongoose');
 var dbHost = 'mongodb://localhost/DscRegistration';
 
 mongoose.connect(dbHost);
@@ -33,23 +33,23 @@ exports.setSharedKey = function (primaryKey, secondaryKey){
         if(!sharedKeys){
             //Shared Keys do not exist so create them.
             sharedKeys = new sharedKey({_id:REGKEYDBID});
-            console.log('Shared Key id created.');
+            logger.debug('Shared Key id created.');
         }
         
         // Shared keys already exist so update fields as appropriate
         if(primaryKey !== sharedKeys.primary){
             sharedKeys.primary = primaryKey;
-            console.log('Primary shared key to be updated.');
+            logger.debug('Primary shared key to be updated.');
         }
         
         if(secondaryKey !== sharedKeys.secondary){
             sharedKeys.secondary = secondaryKey;
-            console.log('Secondary shared key to be updated.');
+            logger.debug('Secondary shared key to be updated.');
         }
 
         //Save changes back to DB.
         sharedKeys.save(function(err){});
-        console.log('Shared keys successfully updated.');
+        logger.debug('Shared keys successfully updated.');
         
     });
 };
@@ -59,7 +59,7 @@ exports.getSharedKey = function (callback){
     var sharedKey = mongoose.model('SharedKey',sharedKeySchema);
     sharedKey.findById(REGKEYDBID,function(err, sharedkeys){
         if(err){
-            console.log(err);
+            logger.info(err);
         }
         else{
             callback(sharedkeys);
@@ -99,22 +99,22 @@ exports.setAgent = function (agentId, agentInfo, callback){
 //This will be used by other microservices to validate Agent is already registered before processing requests
 exports.validate = function (agentId, certificate, callback){
     var agent = mongoose.model('Agent', agentSchema);
-    console.log(`Agent ID: ${agentId}`);
-    console.log(`Certificate: ${certificate}`);
+    logger.debug(`Agent ID: ${agentId}`);
+    logger.debug(`Certificate: ${certificate}`);
 
     agent.findOne({'agentId':agentId}, function(err, node){
         var result = false;
 
         if(err)
         {
-            console.log(`The following error occured while trying to find agent ${agentId}: ${err}.`);
+            logger.info(`The following error occured while trying to find agent ${agentId}: ${err}.`);
         }
 
         //Validate that AgentID exists.
         if(!err && node){
             //Validate certificate thumprint matches
             var clientCert = certificate.fingerprint.split(":").join("");
-            console.log(`cert from DB: ${node.certificate.Thumbprint}
+            logger.debug(`cert from DB: ${node.certificate.Thumbprint}
                          Cert from client: ${certificate.fingerprint}
                          Cert reformat: ${clientCert}`); //Will this be the same for every cert???
             

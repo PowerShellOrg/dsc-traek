@@ -9,8 +9,6 @@ var getConfigPath = `${registrationPath}/Configurations(ConfigurationName=:confi
 
 // Log information for any request made to the server
 router.use('/', function(req, res, next){
-  var logger = req.app.locals.logger;
-
   res.set('ProtocolVersion','2.0');
   logger.debug(`
                 ***********************************
