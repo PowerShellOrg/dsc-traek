@@ -1,11 +1,14 @@
 /* jshint esnext: true */
 
 var express = require('express');
-var router = express.Router();
-var register = require('../bin/register');
+var path = require('path');
+var getConfig = require('../bin/getConfig');
+var logger = require('winston');
 
-var configPath = '/Nodes\\(AgentId=\':term\'\\)'; 
-var getConfigPath = `${registrationPath}/Configurations(ConfigurationName=:configName)/ConfigurationContent`;
+var router = express.Router();
+
+var configPath = '/Nodes\\(AgentId=\':id\'\\)'; 
+var getConfigPath = `${configPath}/Configurations\\(ConfigurationName=\':configName\'\\)/ConfigurationContent`;
 
 // Log information for any request made to the server
 router.use('/', function(req, res, next){
@@ -36,14 +39,19 @@ router.use('/', function(req, res, next){
 
 // Process registration request 
 router.get(getConfigPath, function(req, res, next) {
+  logger.debug(`Configuration '${req.params.configName}' requested.`);
   var responseCode = 200; //400 = BAD REQUEST, 404 = NOT FOUND
+  var configFileName = 'testConfig.mof';
+  var configFilePath = path.join(__dirname, `../${configFileName}`);
   
+  res.statusCode = responseCode;
   res.header('Content-Type','application/json');
   res.header('ProtocolVersion','2.0');
-  res.statusCode = responseCode;
-  res.write(`{"ProtocolVersion":"2.0","Checksum":"475bca2f28784223b8cd65a414a92f6d","ChecksumAlgorithm":"SHA-256"}`);
-  res.sendFile(); //Format???
-  res.end();
+  res.header('Checksum','475bca2f28784223b8cd65a414a92f6d');
+  res.header('ChecksumAlgorithm','SHA-256');
+
+  logger.debug(`Sending configuration file ${configFilePath}.`);
+  res.sendFile(configFilePath);
 });
 
 module.exports = router;

@@ -102,9 +102,7 @@ router.get('/regkeys',function(req, res, next){
 // check whether or not agent is registered. Return 200 if found and 404 if not.
 // This should restricted in some way so that everyone cannot call this to hack the system.
 router.put('/validateAgent', function(req, res) {
-  
-  var logger = req.app.locals.logger;
-  
+    
   //Validate Agent ID exists & certi is valid
 
   dataStore.validate(req.body.agentId, req.body.certificate,function(valid){
@@ -123,9 +121,8 @@ router.put('/validateAgent', function(req, res) {
 
 // Process registration request 
 router.put(registrationPath, function(req, res, next) {
-  var responseCode = 201; //400 = BAD REQUEST, 404 = NOT FOUND
-  var logger = req.app.locals.logger;
-
+  var responseCode = 201; //400 = BAD REQUEST, 404 = NOT found
+  
     dataStore.getSharedKey(function(keys){
       var authCodePrim = signature(req, keys.primary);
       var authCodeSecond = signature(req, keys.secondary);

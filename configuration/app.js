@@ -2,9 +2,10 @@
 
 var express = require('express');
 var crypto = require('crypto');
-var nodes = require('./routes/getConfig');
+var getConfig = require('./routes/getConfig');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var path = require('path');
 var https = require('https');
 var logger = require('winston');
 
@@ -25,7 +26,7 @@ if(fs.existsSync(configPath)){
 }
 
 var app = express();
-
+ 
 app.locals.config = config;
 
 var privateKey = fs.readFileSync('/data/certs/key.pem');
@@ -34,15 +35,15 @@ var sslCert = fs.readFileSync('/data/certs/certificate.pem');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({strict: false, type: '*/*'}));
 
-app.use('/', nodes);
+app.use('/', getConfig);
 
 https.createServer(
     {   key: privateKey, 
         cert: sslCert, 
         requestCert: true, 
-        rejectUnauthorized: false
-    },app).listen(8443,function(req, res){
-    logger.info('Listening for HTTPS traffic on port 8443.\n');
+        rejectUnauthorized: false  // validation of certificate done by app since no Certificate Authority is used
+    },app).listen(config.port,function(req, res){
+    logger.info(`Listening for HTTPS traffic on port ${config.port}.\n`);
 });
 
 module.exports = app; 

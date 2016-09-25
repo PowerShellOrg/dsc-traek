@@ -46,11 +46,12 @@ router.post(getActionPath, function(req, res, next) {
   
   //Send respone to node
     //GetConfiguration, UpdateMetaConfiguration, Retry, or OK
+  var jsonResponse = {NodeStatus:"GetConfiguration",Details:[{ConfigurationName:"WebServer",Status:"GetConfiguration"}]};
+  
+  res.statusCode = 200;
   res.header('Content-Type','application/json');
   res.header('ProtocolVersion','2.0');
-  res.statusCode = 200;
-  res.write(`{"NodeStatus":"GetConfiguration","Details":[{"ConfigurationName":"WebServer","Status":"GetConfiguration"}]}`);
-  res.end();
+  res.json(jsonResponse);
 });
 
 module.exports = router;
