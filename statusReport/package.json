@@ -1,0 +1,15 @@
+{
+  "name": "dscSendReport",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node-dev ./app"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "cookie-parser": "^1.4.3",
+    "express": "~4.13.4",
+    "winston": "^2.2.0",
+    "serve-favicon": "~2.3.0"
+  }
+}
