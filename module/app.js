@@ -1,12 +1,28 @@
+/* jshint esnext: true */
+
 var express = require('express');
-var nodes = require('./routes/nodes');
+var psModule = require('./routes/getModule');
 var bodyParser = require('body-parser');
 var fs = require('fs');
-var http = require('http');
+var path = require('path');
 var https = require('https');
 var logger = require('winston');
 
+// load application configuration from file
+var configPath = path.join(__dirname,'appConfig.json');
+var config;
+
+if(fs.existsSync(configPath)){
+    var configContents = fs.readFileSync(configPath);
+    config = JSON.parse(configContents);
+    logger.debug(`Application configuration loaded for getAction Module from ${configPath}.`);
+}else{
+    throw 'Configuration file not found.';
+}
+
 var app = express();
+ 
+app.locals.config = config;
 
 var privateKey = fs.readFileSync('/data/certs/key.pem');
 var sslCert = fs.readFileSync('/data/certs/certificate.pem');
@@ -18,15 +34,15 @@ logger.add(logger.transports.Console,{timestamp:true,colorize:true,level:'debug'
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({strict: false, type: '*/*'}));
 
-app.use('/', nodes);
+app.use('/', psModule);
 
 https.createServer(
     {   key: privateKey, 
         cert: sslCert, 
         requestCert: true, 
-        rejectUnauthorized: false
-    },app).listen(8443,function(req, res){
-    logger.info('Listening for HTTPS traffic on port 8443.\n');
+        rejectUnauthorized: false  // validation of certificate done by app since no Certificate Authority is used
+    },app).listen(config.port,function(req, res){
+    logger.info(`Listening for HTTPS traffic on port ${config.port}.\n`);
 });
 
 module.exports = app; 
