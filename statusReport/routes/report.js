@@ -43,6 +43,8 @@ router.post(sendReportPath, function(req, res, next) {
 
   var responseCode = 200; //400 = BAD REQUEST, 404 = NOT FOUND
   
+  logger.debug(JSON.stringify(req.body));
+  //logger.debug(req.body.RebootRequested);
   res.statusCode = responseCode;
   res.end();
 });
