@@ -10,12 +10,9 @@ var signature = require('../bin/register');
 var registrationPath = '/Nodes\\(AgentId=\':id\'\\)'; 
 var dataStore;
 
-//Load some initial variables
-//TODO: This should be done in the app so it only happens when the app is loaded. The routes can the reference the datastore from locals.
 router.use('/',function(req, res, next){
   //get the app config json data that was read and stored in the app 
   var config = req.app.locals.config;
-  var logger = req.app.locals.logger;
 
   //validate that the data store file exists in the bin directory
   var dataStoreCode = path.join(__dirname, '..' , 'bin', config.dataStore + '.js');

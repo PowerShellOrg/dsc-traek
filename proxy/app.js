@@ -10,8 +10,8 @@ var logger = require('winston');
 
 var registrationPath = '/Nodes\\(AgentId=\':id\'\\)'; 
 var getActionPath = `${registrationPath}/GetDscAction`;
-var getConfigPath = `${registrationPath}/Configurations\\(ConfigurationName=:configName\\)/ConfigurationContent`;;
-var getModulePath = '/Modules\\(ModuleName=:moduleName,ModuleVersion=:moduleVersion\\)/ModuleContent';
+var getConfigPath = `${registrationPath}/Configurations\\(ConfigurationName=\':configName\'\\)/ConfigurationContent`;;
+var getModulePath = '/Modules\\(ModuleName=\':moduleName\',ModuleVersion=\':moduleVersion\'\\)/ModuleContent';
 var reportPath = `${registrationPath}/SendReport`;
 
 var httpProxy = require('http-proxy');
@@ -85,19 +85,18 @@ proxyApp.all([registrationPath,'/regkeys'], function(req, res){
 });
 
 proxyApp.all(getConfigPath, function(req, res){
-    var nextTarget = proxyUtil.roundRobin(config.proxyTargets.psModule,moduleIndex);
+    var nextTarget = proxyUtil.roundRobin(config.proxyTargets.configuration, configurationIndex);
 
     logger.info(`Routing ${req.path} to next target: ${nextTarget}.`);
     proxy.web(req, res, {target: nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.
 });
 
 proxyApp.all(getModulePath, function(req, res){
-    var nextTarget = proxyUtil.roundRobin(config.proxyTargets.configuration, configurationIndex);
+    var nextTarget = proxyUtil.roundRobin(config.proxyTargets.psModule, moduleIndex);
 
     logger.info(`Routing ${req.path} to next target: ${nextTarget}.`);
     proxy.web(req, res, {target: nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.
 }); 
-
 
 https.createServer(
     {   key: privateKey, 
