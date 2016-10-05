@@ -37,21 +37,26 @@ router.use('/', function(req, res, next){
   next();
 });
 
-// Process registration request 
+// Process get config request
 router.get(getConfigPath, function(req, res, next) {
   logger.debug(`Configuration '${req.params.configName}' requested.`);
   var responseCode = 200; //400 = BAD REQUEST, 404 = NOT FOUND
   var configFileName = 'testConfig.mof';
   var configFilePath = path.join(__dirname, `../${configFileName}`);
   
-  res.statusCode = responseCode;
-  res.header('Content-Type','application/json');
-  res.header('ProtocolVersion','2.0');
-  res.header('Checksum','475bca2f28784223b8cd65a414a92f6d');
-  res.header('ChecksumAlgorithm','SHA-256');
+  //TODO: Handle different response scenarios: file exists, file does not exist, 
 
-  logger.debug(`Sending configuration file ${configFilePath}.`);
-  res.sendFile(configFilePath);
+  getConfig.getFileHash(configFilePath,'sha256', function(hash){
+    res.statusCode = responseCode;
+    res.header('Content-Type','application/json');
+    res.header('ProtocolVersion','2.0');
+    res.header('Checksum','hash');
+    res.header('ChecksumAlgorithm','SHA-256');
+
+    logger.debug(`Sending configuration file ${configFilePath}.`);
+    res.sendFile(configFilePath);
+  });
+
 });
 
 module.exports = router;
