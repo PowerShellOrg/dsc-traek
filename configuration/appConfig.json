@@ -1,6 +1,7 @@
 {
     "ipaddress":"",
     "port":"7443",
+    "configFilesPath":"/Users/markg/git/ossDscServer/configuration/",
     "certPaths":{
         "privateKey":"/data/certs/key.pem",
         "publicKey":"/data/certs/certificate.pem"
