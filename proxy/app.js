@@ -45,6 +45,31 @@ var privateKey = fs.readFileSync(config.certPaths.privateKey);
 var sslCert = fs.readFileSync(config.certPaths.publicKey);
 
 //TODO: handle moving to next proxy if one fails.????
+//Log information for any request made to the server
+proxyApp.use('/', function(req, res, next){
+  logger.debug(`
+                ***********************************
+                Logging information about request...
+
+                request url:        ${req.url}
+                requst method:      ${req.method}
+                request header:     ${JSON.stringify(req.headers)}
+                request body:       ${JSON.stringify(req.body)}
+                request host name:  ${req.hostname}
+                request IP Address: ${req.ip}
+                request trailers:   ${JSON.stringify(req.trailers)}
+                request Cookie:     ${JSON.stringify(req.cookies)}
+                request parameters: ${JSON.stringify(req.params)}
+                request query:      ${JSON.stringify(req.query)}
+                request raw Header: ${req.rawHeaders}
+                request statuscode: ${req.statusCode}
+                reqest statusmesg:  ${req.statusMessage}
+                request cert:       ${JSON.stringify(req.connection.getPeerCertificate())}
+                *********************************************
+  `);
+  next();
+});
+
 proxyApp.all(getActionPath, function(req, res){
     var nextTarget = proxyUtil.roundRobin(config.proxyTargets.getAction,getActionIndex);
     var regTarget = proxyUtil.randomTarget(config.proxyTargets.registration);

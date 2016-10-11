@@ -10,9 +10,13 @@ var router = express.Router();
 var configPath = '/Nodes\\(AgentId=\':id\'\\)'; 
 var sendReportPath = `${configPath}/SendReport`;
 
+var appConfig;
+
 // Log information for any request made to the server
 router.use('/', function(req, res, next){
+
   res.set('ProtocolVersion','2.0');
+
   logger.debug(`
                 ***********************************
                 Logging information about request...
@@ -32,8 +36,7 @@ router.use('/', function(req, res, next){
                 request cert:       ${JSON.stringify(req.connection.getPeerCertificate())}
                 *********************************************
   `);
-  
-  //res.send(200,'This is the root folder that has no content. Go somewhere else, please!');
+
   next();
 });
 
@@ -42,11 +45,18 @@ router.post(sendReportPath, function(req, res, next) {
   logger.debug(`Report recieved for AgentId: '${req.params.id}'.`);
 
   var responseCode = 200; //400 = BAD REQUEST, 404 = NOT FOUND
-  
-  logger.debug(JSON.stringify(req.body));
-  //logger.debug(req.body.RebootRequested);
-  res.statusCode = responseCode;
-  res.end();
+ 
+  report.writeReportData(req,function(err){
+    if(err){
+      responseCode = 404;
+    }
+
+    logger.debug(`Sending status ${responseCode}.`);
+    
+    res.statusCode = responseCode;
+    res.end();
+  });
+
 });
 
 module.exports = router;

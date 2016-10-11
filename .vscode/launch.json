@@ -5,7 +5,7 @@
             "name": "Launch",
             "type": "node",
             "request": "launch",
-            "program": "${workspaceRoot}/registration/app.js",
+            "program": "${workspaceRoot}/statusReport/app.js", //sandbox/arrays.js",  /
             "stopOnEntry": false,
             "args": [],
             "cwd": "${workspaceRoot}",

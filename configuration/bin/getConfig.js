@@ -14,8 +14,14 @@ exports.getFileHash = function(filePath, algorithm, callback){
     });
 
     stream.on('end',function(){
-        hash = chksum.digest('hex');
+        hash = chksum.digest('hex').toUpperCase();
         logger.debug(`Successfully generated hash for configuration file ${filePath}: '${hash}'`);
         callback(hash);
     });
+};
+
+//Compare has sent from target node with hash of configuration stored on server 
+exports.compareHash = function(configName, targetNodeHash, callback){
+    
+    callback(hashesSame);
 };

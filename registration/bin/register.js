@@ -4,6 +4,8 @@
 
 var crypto = require('crypto');
 
+//TODO: validate that the xms-date is within 15 min or so.
+
 module.exports =  function(req, key){
   // Hash the body of the request with sha-256
   var requestBody = JSON.stringify(req.body);
