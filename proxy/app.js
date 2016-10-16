@@ -118,7 +118,7 @@ proxyApp.all(getConfigUri, function(req, res){
 });
 
 proxyApp.all(getModuleUri, function(req, res){
-    var nextTarget = proxyUtil.roundRobin(config.proxyTargets.psModule, moduleIndex);
+    var nextTarget = proxyUtil.roundRobin(config.proxyTargets.resourceModule, moduleIndex);
 
     logger.info(`Routing ${req.path} to next target: ${nextTarget}.`);
     proxy.web(req, res, {target: nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.

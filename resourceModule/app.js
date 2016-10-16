@@ -25,7 +25,7 @@ var app = express();
 app.locals.config = config;
 
 var privateKey = fs.readFileSync(config.certPaths.privateKey);
-var sslCert = fs.readFileSync(config.certPaths.pubicKey);
+var sslCert = fs.readFileSync(config.certPaths.publicKey);
 
 //Set up logging
 logger.remove(logger.transports.Console);

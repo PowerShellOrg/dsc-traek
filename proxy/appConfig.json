@@ -14,7 +14,7 @@
         "getAction":[
             "https://dscNode:5443"
         ],
-        "psModule":[
+        "resourceModule":[
             "https://dscNode:6443"
         ],
         "configuration":[

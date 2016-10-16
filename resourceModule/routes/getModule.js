@@ -7,7 +7,7 @@ var logger = require('winston');
 
 var router = express.Router();
 
-var getModuleUri = `/Modules\\(ModuleName=\':moduleName\',ModuleVersion=\':moduleVersion\'\\)/ModuleContent`;
+var moduleUri = `/Modules\\(ModuleName=\':moduleName\',ModuleVersion=\':moduleVersion\'\\)/ModuleContent`;
 
 // Log information for any request made to the server
 router.use('/', function(req, res, next){
@@ -37,20 +37,37 @@ router.use('/', function(req, res, next){
 });
 
 // Process registration request 
-  router.get(getModuleUri, function(req, res, next) {
-  logger.debug(`Module '${req.params.moduleName}' with version '${req.params.moduleVersion}' requested.`);
-  var responseCode = 200; //400 = BAD REQUEST, 404 = NOT FOUND
-  var moduleFileName = 'xModule.zip';
-  var moduleFilePath = path.join(__dirname, `../${moduleFileName}`);
+router.get(moduleUri, function(req, res, next) {
+    logger.debug(`Module '${req.params.moduleName}' with version '${req.params.moduleVersion}' requested.`);
   
-  res.statusCode = responseCode;
-  res.header('Content-Type','application/json');
-  res.header('ProtocolVersion','2.0');
-  res.header('Checksum','475bca2f28784223b8cd65a414a92f6d');
-  res.header('ChecksumAlgorithm','SHA-256');
+    getModule.getResourceModule(req, function(resourceModule, fileInfo, err){
 
-  logger.debug(`Sending module file ${moduleFilePath}.`);
-  res.sendFile(moduleFilePath);
+      res.statusCode = 200;
+
+      if(err){
+        res.statusCode = 404;
+      }
+
+      res.header('Content-Type','application/octet-stream');
+      res.header('ProtocolVersion','2.0');
+      res.header('Content-Length', fileInfo.size);
+      res.header('Checksum',fileInfo.hash);
+      res.header('ChecksumAlgorithm',fileInfo.hashAlgorithm);
+
+      if(!err){
+        logger.debug(`Sending module file ${req.params.moduleName}.`);
+        res.end(resourceModule, 'binary');
+      }
+      else {
+        res.end();
+      }
+  });
+  
+});
+
+// Send module to data store
+router.put(moduleUri, function(){
+
 });
 
 module.exports = router;

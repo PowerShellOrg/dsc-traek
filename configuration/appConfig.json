@@ -5,6 +5,9 @@
         "privateKey":"/data/certs/key.pem",
         "publicKey":"/data/certs/certificate.pem"
     },
+    "dataStore":{
+        "type":"fileStore"
+    },
     "configurations":{
         "filePath":"/Users/markg/git/ossDscServer/configuration/",
         "hashAlgorithm":"sha256"
