@@ -3,10 +3,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var regRouter = require('./routes/registration');
+var regBin = require('./bin/register');
 var fs = require('fs');
 var path = require('path');
 var https = require('https');  // Only support HTTPS
 var logger = require('winston');
+
+var config;
 
 //Set up logging
 logger.remove(logger.transports.Console);
@@ -14,7 +17,6 @@ logger.add(logger.transports.Console,{timestamp:true, colorize:true, level:'debu
 
 // load application configuration from file
 var configPath = path.join(__dirname,'appConfig.json');
-var config;
 
 if(fs.existsSync(configPath)){
     var configContents = fs.readFileSync(configPath);
@@ -38,13 +40,16 @@ app.use(bodyParser.json({strict: false, type: '*/*'}));
 
 app.use('/', regRouter);
 
+//Create database connection synchronously.
+regBin.connectToDatastore(config);
+
 https.createServer(
     {   key: privateKey, 
         cert: sslCert, 
         requestCert: true, 
         rejectUnauthorized: false  // validation of certificate done by app since no Certificate Authority is used
     },app).listen(config.port,function(req, res){
-    logger.info(`Listening for HTTPS traffic on port ${config.port}.\n`);
+    logger.info(`Registration module listening for HTTPS traffic on port ${config.port}.\n`);
 });
 
 module.exports = app; 

@@ -7,7 +7,7 @@ var logger = require('winston');
 
 var router = express.Router();
 
-var getModulePath = `/Modules\\(ModuleName=\':moduleName\',ModuleVersion=\':moduleVersion\'\\)/ModuleContent`;
+var getModuleUri = `/Modules\\(ModuleName=\':moduleName\',ModuleVersion=\':moduleVersion\'\\)/ModuleContent`;
 
 // Log information for any request made to the server
 router.use('/', function(req, res, next){
@@ -37,7 +37,7 @@ router.use('/', function(req, res, next){
 });
 
 // Process registration request 
-  router.get(getModulePath, function(req, res, next) {
+  router.get(getModuleUri, function(req, res, next) {
   logger.debug(`Module '${req.params.moduleName}' with version '${req.params.moduleVersion}' requested.`);
   var responseCode = 200; //400 = BAD REQUEST, 404 = NOT FOUND
   var moduleFileName = 'xModule.zip';

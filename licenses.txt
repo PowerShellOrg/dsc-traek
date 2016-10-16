@@ -189,7 +189,7 @@
 │  ├─ licenses: MIT*
 │  ├─ publisher: TJ Holowaychuk
 │  └─ email: tj@vision-media.ca
-├─ cycle@1.0.3
+├─ cycle@1.0.3   ************************************ No License *****************************************************
 │  ├─ licenses: UNKNOWN
 │  └─ repository: https://github.com/dscape/cycle
 ├─ debug@2.2.0
@@ -640,13 +640,13 @@
 │  ├─ publisher: Aaron Heckmann
 │  ├─ email: aaron.heckmann+github@gmail.com
 │  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/sliced/LICENSE
-├─ source-map@0.1.43
+├─ source-map@0.1.43   ************************************Investigate*****************************************************
 │  ├─ licenses: BSD
 │  ├─ repository: https://github.com/mozilla/source-map
 │  ├─ publisher: Nick Fitzgerald
 │  ├─ email: nfitzgerald@mozilla.com
 │  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/transformers/node_modules/source-map/LICENSE
-├─ source-map@0.4.4
+├─ source-map@0.4.4 ************************************Investigate*****************************************************
 │  ├─ licenses: BSD-3-Clause
 │  ├─ repository: https://github.com/mozilla/source-map
 │  ├─ publisher: Nick Fitzgerald
@@ -687,7 +687,7 @@
 │  ├─ licenses: MIT
 │  ├─ repository: https://github.com/jshttp/type-is
 │  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/type-is/LICENSE
-├─ uglify-js@2.2.5
+├─ uglify-js@2.2.5   ************************************Investigate*****************************************************
 │  ├─ licenses: UNKNOWN
 │  └─ repository: https://github.com/mishoo/UglifyJS2
 ├─ uglify-js@2.7.3

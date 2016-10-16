@@ -7,8 +7,8 @@ var logger = require('winston');
 
 var router = express.Router();
 
-var configPath = '/Nodes\\(AgentId=\':id\'\\)'; 
-var sendReportPath = `${configPath}/SendReport`;
+var configUri = '/Nodes\\(AgentId=\':id\'\\)'; 
+var sendReportUri = `${configUri}/SendReport`;
 
 var appConfig;
 
@@ -41,7 +41,7 @@ router.use('/', function(req, res, next){
 });
 
 // Process registration request 
-router.post(sendReportPath, function(req, res, next) {
+router.post(sendReportUri, function(req, res, next) {
   logger.debug(`Report recieved for AgentId: '${req.params.id}'.`);
 
   var responseCode = 200; //400 = BAD REQUEST, 404 = NOT FOUND

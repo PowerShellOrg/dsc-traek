@@ -7,9 +7,8 @@ var mongoose = require('mongoose');
 var reportSchema;
 
 exports.init = function(connectionString){
-    var dbHost = connectionString;
-
-    mongoose.connect(dbHost);
+    
+    mongoose.connect(connectionString);
 
     //Schema for reporting data
     reportSchema = mongoose.Schema({

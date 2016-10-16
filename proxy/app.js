@@ -7,12 +7,13 @@ var path = require('path');
 var fs = require('fs');
 var proxyUtil = require('./bin/proxyUtil');
 var logger = require('winston');
+var spawn = require('child_process').fork;
 
-var registrationPath = '/Nodes\\(AgentId=\':id\'\\)'; 
-var getActionPath = `${registrationPath}/GetDscAction`;
-var getConfigPath = `${registrationPath}/Configurations\\(ConfigurationName=\':configName\'\\)/ConfigurationContent`;;
-var getModulePath = '/Modules\\(ModuleName=\':moduleName\',ModuleVersion=\':moduleVersion\'\\)/ModuleContent';
-var reportPath = `${registrationPath}/SendReport`;
+var registrationUri = '/Nodes\\(AgentId=\':id\'\\)'; 
+var getActionUri = `${registrationUri}/GetDscAction`;
+var getConfigUri = `${registrationUri}/Configurations\\(ConfigurationName=\':configName\'\\)/ConfigurationContent`;;
+var getModuleUri = '/Modules\\(ModuleName=\':moduleName\',ModuleVersion=\':moduleVersion\'\\)/ModuleContent';
+var reportUri = `${registrationUri}/SendReport`;
 
 var httpProxy = require('http-proxy');
 var proxy = httpProxy.createProxyServer({});
@@ -70,7 +71,7 @@ proxyApp.use('/', function(req, res, next){
   next();
 });
 
-proxyApp.all(getActionPath, function(req, res){
+proxyApp.all(getActionUri, function(req, res){
     var nextTarget = proxyUtil.roundRobin(config.proxyTargets.getAction,getActionIndex);
     var regTarget = proxyUtil.randomTarget(config.proxyTargets.registration);
 
@@ -96,32 +97,40 @@ proxyApp.all(getActionPath, function(req, res){
     });
 });
 
-proxyApp.all(reportPath, function(req, res){
+proxyApp.all(reportUri, function(req, res){
     var nextTarget = proxyUtil.roundRobin(config.proxyTargets.reporting, reportingIndex);
     logger.info(`Routing ${req.path} to next target: ${nextTarget}.`);
     proxy.web(req, res, {target: nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.
 }); 
 
-proxyApp.all([registrationPath,'/regkeys'], function(req, res){
+proxyApp.all([registrationUri,'/regkeys'], function(req, res){
     var nextTarget = proxyUtil.roundRobin(config.proxyTargets.registration,registrationIndex);
 
     logger.info(`Routing ${req.path} to next target: ${nextTarget}.`);
     proxy.web(req, res, {target:nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.
 });
 
-proxyApp.all(getConfigPath, function(req, res){
+proxyApp.all(getConfigUri, function(req, res){
     var nextTarget = proxyUtil.roundRobin(config.proxyTargets.configuration, configurationIndex);
 
     logger.info(`Routing ${req.path} to next target: ${nextTarget}.`);
     proxy.web(req, res, {target: nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.
 });
 
-proxyApp.all(getModulePath, function(req, res){
+proxyApp.all(getModuleUri, function(req, res){
     var nextTarget = proxyUtil.roundRobin(config.proxyTargets.psModule, moduleIndex);
 
     logger.info(`Routing ${req.path} to next target: ${nextTarget}.`);
     proxy.web(req, res, {target: nextTarget, secure:false}); //secure: false is being used to allow for self signed certs. This should be removed in production.
 }); 
+
+// TODO: paramaterize this so only desired modules will be spawned.
+// start modules in separate processes
+var reportingModule = spawn('../statusReport/app');
+var registrationModule = spawn('../registration/app');
+var dscResourceModule = spawn('../module/app');
+var getActionModule = spawn('../getAction/app');
+var configurationModule = spawn('../configuration/app');
 
 https.createServer(
     {   key: privateKey, 

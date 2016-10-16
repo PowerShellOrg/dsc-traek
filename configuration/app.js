@@ -29,8 +29,8 @@ var app = express();
  
 app.locals.config = config;
 
-var privateKey = fs.readFileSync('/data/certs/key.pem');
-var sslCert = fs.readFileSync('/data/certs/certificate.pem');
+var privateKey = fs.readFileSync(config.certPaths.privateKey);
+var sslCert = fs.readFileSync(config.certPaths.pubicKey);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({strict: false, type: '*/*'}));
@@ -43,7 +43,7 @@ https.createServer(
         requestCert: true, 
         rejectUnauthorized: false  // validation of certificate done by app since no Certificate Authority is used
     },app).listen(config.port,function(req, res){
-    logger.info(`Listening for HTTPS traffic on port ${config.port}.\n`);
+    logger.info(`Configuraiton module listening for HTTPS traffic on port ${config.port}.\n`);
 });
 
 module.exports = app; 

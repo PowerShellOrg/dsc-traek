@@ -48,7 +48,7 @@ https.createServer(
         rejectUnauthorized: false  // validation of certificate done by app since no Certificate Authority is used
     },app).listen(config.port,function(req, res){
     
-    logger.info(`Listening for HTTPS traffic on port ${config.port}.\n`);
+    logger.info(`Reporting module listening for HTTPS traffic on port ${config.port}.\n`);
 });
 
 module.exports = app; 

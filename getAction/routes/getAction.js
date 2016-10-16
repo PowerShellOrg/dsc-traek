@@ -5,7 +5,7 @@ var logger = require('winston');
 
 var router = express.Router();
 
-var getActionPath = `/Nodes\\(AgentId=\':id\'\\)/GetDscAction`;
+var getActionUri = `/Nodes\\(AgentId=\':id\'\\)/GetDscAction`;
 
 //Log information for any request made to the server
 router.use('/', function(req, res, next){
@@ -40,7 +40,7 @@ router.get('/',function(req, res, next){
 
 //req should be in the following format: {"ClientStatus":[{"Checksum""ChecksumAlgorithm""ConfigurationName"}]}
 //res should be in the following format: {"NodeStatus":"","Details":[{"ConfigurationName","Status"}]}
-router.post(getActionPath, function(req, res, next) {
+router.post(getActionUri, function(req, res, next) {
   //compare checksums sent with current - the current should be queried from configuration service.
     
   

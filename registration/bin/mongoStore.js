@@ -4,25 +4,31 @@
 var logger = require('winston');
 var mongoose = require('mongoose');
 
+var sharedKeySchema;
+var agentSchema;
+
 const REGKEYDBID = "e9364206-c1bf-4916-af8c-8a04c8dc28c7";   //unique key to represent registration keys. This does not need to be changed.
-var dbHost = 'mongodb://localhost/DscRegistration';
 
-mongoose.connect(dbHost);
+exports.init = function(connectionString){
 
-//Schema for Shared Registration keys
-var sharedKeySchema = mongoose.Schema({
-    _id: String,
-    primary: String,
-    secondary: String
-});
+    mongoose.connect(connectionString);
 
-// Schema for Agents
-var agentSchema = mongoose.Schema({
-    agentId: {index: true, type: String},
-    nodeInfo: {},
-    configurations: [String],
-    certificate:{}
-});
+    //Schema for Shared Registration keys
+    sharedKeySchema = mongoose.Schema({
+        _id: String,
+        primary: String,
+        secondary: String
+    });
+
+    // Schema for Agents
+    agentSchema = mongoose.Schema({
+        agentId: {index: true, type: String},
+        nodeInfo: {},
+        configurations: [String],
+        certificate:{}
+    });
+
+};
 
 //Sets the shared keys that will be used by nodes to register with this server
 exports.setSharedKey = function (primaryKey, secondaryKey){
@@ -57,6 +63,7 @@ exports.setSharedKey = function (primaryKey, secondaryKey){
 //Gets the shared keys that nodes can use to register with this server 
 exports.getSharedKey = function (callback){
     var sharedKey = mongoose.model('SharedKey',sharedKeySchema);
+    
     sharedKey.findById(REGKEYDBID,function(err, sharedkeys){
         if(err){
             logger.info(err);

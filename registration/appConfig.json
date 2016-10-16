@@ -5,5 +5,8 @@
         "privateKey":"/data/certs/key.pem",
         "publicKey":"/data/certs/certificate.pem"
     },
-    "dataStore":"mongoStore"
+    "dataStore":{
+        "type":"mongoStore",
+        "connectionString":"mongodb://localhost/DscRegistration"
+    }
 }
