@@ -48,15 +48,17 @@ router.get(moduleUri, function(req, res, next) {
         res.statusCode = 404;
       }
 
+      res.header('Cache-Control','no-cache');
       res.header('Content-Type','application/octet-stream');
       res.header('ProtocolVersion','2.0');
       res.header('Content-Length', fileInfo.size);
       res.header('Checksum',fileInfo.hash);
-      res.header('ChecksumAlgorithm',fileInfo.hashAlgorithm);
+      res.header('ChecksumAlgorithm','SHA-256');
 
       if(!err){
         logger.debug(`Sending module file ${req.params.moduleName}.`);
-        res.end(resourceModule, 'binary');
+        res.write(resourceModule);
+        res.end();
       }
       else {
         res.end();

@@ -7,7 +7,7 @@ var logger = require('winston');
 
 //TODO: Validate certificate if it exists. If cert exists, request did not come through proxy. Return 400 if cert invalid.
 var getResourceModule = function(moduleName, moduleVersion, appConfig, callback){
-    var resourceModule;
+    var resourceModule = Buffer.alloc(0);
     var moduleFilePath;
     var fileInfo = {size:0,hash:'',hashAlgorith:''};
 
@@ -25,15 +25,23 @@ var getResourceModule = function(moduleName, moduleVersion, appConfig, callback)
                 fileInfo.size = stats.size;
                 fileInfo.hashAlgorithm = appConfig.fileStore.hashAlgorithm;
 
-                getFileHash(moduleFilePath,fileInfo.hashAlgorithm, function(hash, error){
-                    fileInfo.hash = hash;
+                var chksum = crypto.createHash(fileInfo.hashAlgorithm);
+                var moduleStream = fs.createReadStream(moduleFilePath);
 
-                    fs.readFile(moduleFilePath,"binary", function(error, data){
+                moduleStream.on('data',function(chunk){
+                    chksum.update(chunk);
+                    
+                    var length = resourceModule.length + chunk.length;
+                    resourceModule = Buffer.concat([resourceModule,chunk], length);
 
-                        resourceModule = data;
+                });
+                
+                moduleStream.on('end',function(){
 
-                        callback(resourceModule, fileInfo, error);
-                    });
+                    fileInfo.hash = chksum.digest('hex').toUpperCase();
+                    logger.debug(`Successfully generated hash for module file ${moduleFilePath}: '${fileInfo.hash}'`);
+
+                    callback(resourceModule, fileInfo, error);
                 });
             }
             else
@@ -48,27 +56,6 @@ var getResourceModule = function(moduleName, moduleVersion, appConfig, callback)
         callback(null, fileInfo, error);
     }
 
-};
-
-var getFileHash = function(filePath, algorithm, callback){
-    try {
-        var chksum = crypto.createHash(algorithm);
-        var hash;
-        var stream = fs.createReadStream(filePath); 
-
-        stream.on('data',function(chunk){
-            chksum.update(chunk);
-        });
-
-        stream.on('end',function(){
-            hash = chksum.digest('hex').toUpperCase();
-            logger.debug(`Successfully generated hash for module file ${filePath}: '${hash}'`);
-            callback(hash, null);
-        });
-    } catch (error) {
-        logger.info(`Failed to get hash for file ${filePath} using algorithm ${algorithm}.`);
-        callback(null, error);
-    }  
 };
 
 exports.getResourceModule = getResourceModule;
