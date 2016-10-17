@@ -11,7 +11,7 @@ var logger = require('winston');
 
 //Set up logging
 logger.remove(logger.transports.Console);
-logger.add(logger.transports.Console,{timestamp:true,colorize:true,level:'debug'});
+logger.add(logger.transports.Console,{timestamp:true,colorize:true,level:'debug'}); 
 
 // load application configuration from file
 var configPath = path.join(__dirname,'appConfig.json');

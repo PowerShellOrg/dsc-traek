@@ -126,11 +126,11 @@ proxyApp.all(getModuleUri, function(req, res){
 
 // TODO: paramaterize this so only desired modules will be spawned.
 // start modules in separate processes
-var reportingModule = spawn('../statusReport/app');
-var registrationModule = spawn('../registration/app');
-var dscResourceModule = spawn('../resourceModule/app');
-var getActionModule = spawn('../getAction/app');
-var configurationModule = spawn('../configuration/app');
+// var reportingModule = spawn('../statusReport/app');
+// var registrationModule = spawn('../registration/app');
+// var dscResourceModule = spawn('../resourceModule/app');
+// var getActionModule = spawn('../getAction/app');
+// var configurationModule = spawn('../configuration/app');
 
 https.createServer(
     {   key: privateKey, 

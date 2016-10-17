@@ -9,7 +9,7 @@
         "type":"fileStore"
     },
     "configurations":{
-        "filePath":"/Users/markg/git/ossDscServer/configuration/",
+        "filePath":"/Users/markg/dscStore/configurations",
         "hashAlgorithm":"sha256"
     }
 }
