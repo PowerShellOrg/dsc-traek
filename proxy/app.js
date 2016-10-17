@@ -128,7 +128,7 @@ proxyApp.all(getModuleUri, function(req, res){
 // start modules in separate processes
 var reportingModule = spawn('../statusReport/app');
 var registrationModule = spawn('../registration/app');
-var dscResourceModule = spawn('../module/app');
+var dscResourceModule = spawn('../resourceModule/app');
 var getActionModule = spawn('../getAction/app');
 var configurationModule = spawn('../configuration/app');
 

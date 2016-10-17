@@ -15,35 +15,38 @@ var getResourceModule = function(moduleName, moduleVersion, appConfig, callback)
 
     try{
         moduleFilePath = path.join(appConfig.fileStore.root, `${moduleName}`, `${moduleVersion}`, `${moduleName}.zip`);
-        fs.readFile(moduleFilePath,"binary", function(error, data){
+        
+        logger.debug(`Path to ${moduleName} version ${moduleVersion}: ${moduleFilePath}`);
+    
+        //Get statistics about module file to validate it exists. Error will be returned if file does not exists.
+        fs.stat(moduleFilePath,function(error, stats){ 
+            //Reply with module file when config file exists.
+            if(!error){
+                fileInfo.size = stats.size;
+                fileInfo.hashAlgorithm = appConfig.fileStore.hashAlgorithm;
 
-            resourceModule = data;
+                getFileHash(moduleFilePath,fileInfo.hashAlgorithm, function(hash, error){
+                    fileInfo.hash = hash;
+
+                    fs.readFile(moduleFilePath,"binary", function(error, data){
+
+                        resourceModule = data;
+
+                        callback(resourceModule, fileInfo, error);
+                    });
+                });
+            }
+            else
+            {
+                callback(null, fileInfo, error);
+            }
         });
     }
     catch (error){
         logger.debug(`Path for ${moduleName} version ${moduleVersion} not found in ${appConfig.fileStore.root}.`);
-        moduleFilePath = '';
+        
+        callback(null, fileInfo, error);
     }
-    logger.debug(`Path to ${moduleName} version ${moduleVersion}: ${moduleFilePath}`);
-    
-    //Get statistics about module file to validate it exists. Error will be returned if file does not exists.
-    fs.stat(moduleFilePath,function(err, stats){ 
-        //Reply with module file when config file exists.
-        if(!err){
-            fileInfo.size = stats.size;
-            fileInfo.hashAlgorithm = appConfig.fileStore.hashAlgorithm;
-
-            getFileHash(moduleFilePath,fileInfo.hashAlgorith, function(hash, err){
-                fileInfo.hash = hash;
-
-                callback(resourceModule, fileInfo, err);
-            });
-        }
-        else
-        {
-            callback(resourceModule, fileInfo, err);
-        }
-    });
 
 };
 
@@ -63,7 +66,7 @@ var getFileHash = function(filePath, algorithm, callback){
             callback(hash, null);
         });
     } catch (error) {
-        logger.info(`Failed to get hash for file ${filePath} using algorith ${algorithm}.`);
+        logger.info(`Failed to get hash for file ${filePath} using algorithm ${algorithm}.`);
         callback(null, error);
     }  
 };

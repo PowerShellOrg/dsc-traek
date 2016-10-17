@@ -30,7 +30,7 @@ var app = express();
 app.locals.config = config;
 
 var privateKey = fs.readFileSync(config.certPaths.privateKey);
-var sslCert = fs.readFileSync(config.certPaths.pubicKey);
+var sslCert = fs.readFileSync(config.certPaths.publicKey);
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json({strict: false, type: '*/*'}));
