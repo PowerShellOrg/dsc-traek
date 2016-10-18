@@ -41,54 +41,35 @@ router.use('/', function(req, res, next){
 
 // Process get config request
 router.get(getConfigUri, function(req, res, next) {
-  var appConfig = req.app.locals.config;
-
+  
   logger.debug(`Configuration '${req.params.configName}' requested.`);
-  var configFileName = `${req.params.configName}.mof`;
-  
-  logger.debug(`Path to configuration files: ${appConfig.configurations.filePath}.`);
-  var configFilePath = path.join(appConfig.configurations.filePath, `${configFileName}`);
-  
+   
   //TODO: Validate certificate if it exists. If cert exists, request did not come through proxy. Return 400 if cert invalid.
+  //TODO: comapre file hash sent in req to hash for stored configuration. Get file if hashes are different.
   
-  
-  //Get statistics about configuration file to validate it exists. Error will be returned if file does not exists.
-  fs.stat(configFilePath,function(err, stats){ 
-    //Reply with configuration file and S_OK when config file exists.
-    if(!err){
-        getConfig.getFileHash(configFilePath,appConfig.configurations.hashAlgorithm, function(hash, err){
-          
-          res.statusCode = 200;
+  getConfig.getConfiguration(req, function(configuration, fileInfo, err){
 
-          if(err){
-            res.statusCode = 404;
-          }
+      res.statusCode = 200;
 
-          res.header('Content-Type','text/plain');
-          res.header('ProtocolVersion','2.0');
-          res.header('Content-Length', stats.size);
-          res.header('Checksum',hash);
-          res.header('ChecksumAlgorithm','SHA-256');
+      if(err){
+        res.statusCode = 404;
+      }
 
-          if(!err){
-            logger.debug(`Sending configuration file ${configFilePath}.`);
-            res.sendFile(configFilePath);
-          }
-          else {
-            res.end();
-          }
-        });
-
-    }
-    //Reply with Not Found 
-    else
-    {
-      res.statusCode = 404;
+      res.header('Cache-Control','no-cache');
+      res.header('Content-Type','application/octet-stream');
       res.header('ProtocolVersion','2.0');
+      res.header('Content-Length', fileInfo.size);
+      res.header('Checksum',fileInfo.hash);
+      res.header('ChecksumAlgorithm','SHA-256');
 
-      logger.info(`Could not find configuration file ${configFilePath}.`);
-      res.end();
-    }
+      if(!err){
+        logger.debug(`Sending configuration file ${req.params.configName}.`);
+        res.write(configuration);
+        res.end();
+      }
+      else {
+        res.end();
+      }
   });
 });
 

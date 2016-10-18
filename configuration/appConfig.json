@@ -8,8 +8,8 @@
     "dataStore":{
         "type":"fileStore"
     },
-    "configurations":{
-        "filePath":"/Users/markg/dscStore/configurations",
+    "fileStore":{
+        "root":"/Users/markg/dscStore/configurations",
         "hashAlgorithm":"sha256"
     }
 }
