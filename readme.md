@@ -1,29 +1,51 @@
-# Desired State Configuration Pull Server
+# DSC-TRÆK
 
-Powershell Desired State Configuration (DSC) is a management platform
-that enables configuration of your environment at cloud speed and scale.
-Although DSC supports management by pushing configurations to target nodes,
-in order to achieve cloud speed and scale a central management solution
-is required.
-[Azure Automation DSC](https://azure.microsoft.com/en-us/documentation/articles/automation-dsc-overview/)
-provides a solution for organizations with servers that have cloud access.
-This project provides a DSC Pull Service solution
-that can be installed on-premises.
+The project dsc-traek is an Open Source implementation of a service to host
+the Powershell Desired State Configuration (DSC) Pull mode
+[protocol](https://msdn.microsoft.com/en-us/library/dn393548.aspx).
 
-It provides three primary functions:
+This is a community supported project with no official support from Microsoft.
+Although the maintainers/contributors for the project can be Microsoft employees
+(and from the PowerShell DSC engineering team) that does not implicitly create
+a support relationship.
+There is no SLA for resolving issues or on call support.
 
-- a **repository** for node configurations (mofs) and PowerShell modules
+If a supported and scalable solution is required, the recommended implementation
+of the Pull mode protocol is 
+[Azure Automation DSC](https://azure.microsoft.com/en-us/documentation/articles/automation-dsc-overview/).
+
+For a fully supported but limited implementation of Pull service protocol for
+isolated network scenarios, consider
+[Windows DSC Pull Service](https://docs.microsoft.com/en-us/powershell/dsc/pullserver).
+
+For information on how to use PowerShell DSC and how to configure clients
+to register with a Pull service, see the official PowerShell DSC
+[documentation](https://docs.microsoft.com/en-us/powershell/dsc/overview).
+
+## Project vision
+
+The journey for this project is to explore the possibility of using innovative
+approaches to cloud scale applications as a platform for delivering
+configuration management functionality.
+
+The implementation is written in Node.js following best practices for
+micro-services with an expectation that the only release vehicle would be
+a container platform.
+The most likely hosting environment would be Kubernetes.
+
+*Please note that contributors to the project are learning Node.js and
+Kubernetes during the process of development, which makes this an exciting
+learning opportunity but likely to introduce breaking changes during early
+phases of development.*
+
+## Functionality included
+
+This solution is intended to provide three primary functions:
+
+- a **repository** for node configurations (mof) and PowerShell modules
  containing DSC resources
- - **assignment** of node configurations to target nodes
- - **reporting**
-
-In order for any configuration management solution
-to be viable for production use,
-it must provide visability into configuration state across all managed nodes.
-The DSC Pull Service provides **reporting** with high level configuration status
-as well as details about each node's configuration
-so that you can quickly and easily understand the state of your environment
-and what if any steps need to be taken.
+- **assignment** of node configurations to target nodes
+- **reporting**
 
 The **repository** stores all configurations and resources
 required by target nodes.
@@ -32,9 +54,9 @@ and associated DSC resources to all target nodes within your organization.
 You do not need to make sure that target nodes have the required resources
 before they can enact the configuration
 because a node will just get any missing resources from the pull server
-before applying the configuration. 
+before applying the configuration.
 
-Lastly, once a target node is configured to pull node configurations
+Once a target node is configured to pull node configurations
 from a pull server,
 an Administrator no longer needs to directly access any target nodes
 in order to **assign** a node configuration to it.
@@ -42,61 +64,20 @@ They simply assign the desired node configuration to the desired target node(s)
 and next time the target node communicates with the server,
 it will get the assigned configuration and apply it.
 
-[About Powershell DSC](https://technet.microsoft.com/en-us/library/dn249912.aspx)
-
-## Quick Start
-
-### Install & Configure Pull Server
-To fully install and configure the pull server use the Assert-DscPullServer.ps1
-script in the tools directory of this repo.
-Before running the following commands,
-copy your SSL certificate PF file to the computer
-that will become your DSC pull server.
-In the below example,
-I copied 'Fabricam_SSL.pfx' to 'C:\Configs\Certs\'
-on the pull server.
-Next generate a GUID to use as the shared secret
-that will be used by target nodes during registration.
-Keep this shared secret in a safe place as it will allow any target node
-to register with your pull server.
-The following PowerShell command will generate a GUID
-that can be used as the shared secret:
-
-```PowerShell
-[GUID]::NewGuid()
-```
-
-Finally run the 'Assert-DscPullServer.ps1' script
-passing in the SSL cert path, GUID and output path
-to install and configure the pull server as follows:
-
-```PowerShell
-    Assert-DscPullServer.ps1 -SSLCertificatePath 'C:\Configs\Certs\Fabricam_SSL.pfx' -SharedRegistrationKey '1de7d9f9-b26f-465a-9e5b-5c2fe60ff1b0' -OutputPath 'C:\Configs\Pull\'
-```
-
-### Configure Target Nodes
-The following script will generate a meta-configuration.
-When applied to target nodes using the Set-DscLocalConfiguraitonManager cmdlet,
-will put them in pull mode and point them at your pull server.
-All configurations, resources and reporting will come from
-and go to the pull server.
-
-```PowerShell
-
-```
-
-### Publish Configurations & Resources
-
-```PowerShell
-
-```
+In order for any configuration management solution to be viable,
+it must provide visibility into configuration state across all managed nodes.
+The traek project provides data to support **reporting**
+with high level configuration status as well as details
+about each node's configuration
+so that you can quickly and easily understand the state of your environment
+and what if any steps need to be taken.
 
 # Community
-[DSC on Stack Exchange](http://stackoverflow.com/questions/tagged/dsc)    
+[DSC on Stack Exchange](http://stackoverflow.com/questions/tagged/dsc)
 [DSC on Twitter](https://twitter.com/hashtag/PSDSC?src=hash)
 
 ## License
-The DSC Pull Server is licensed under the MIT license.    
+The DSC Pull Server is licensed under the MIT license.
 [License](http://github.com/PowerShell/DSCPullServer/License)
 
 ## Contributing
