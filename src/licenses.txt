@@ -1,0 +1,772 @@
+├─ accepts@1.2.13
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/accepts
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/accepts/LICENSE
+├─ acorn-globals@1.0.9
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ForbesLindesay/acorn-globals
+│  ├─ publisher: ForbesLindesay
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/acorn-globals/LICENSE
+├─ acorn@1.2.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/marijnh/acorn
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/with/node_modules/acorn/LICENSE
+├─ acorn@2.7.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ternjs/acorn
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/acorn/LICENSE
+├─ align-text@0.1.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jonschlinkert/align-text
+│  ├─ publisher: Jon Schlinkert
+│  ├─ url: https://github.com/jonschlinkert
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/align-text/LICENSE
+├─ amdefine@1.0.0
+│  ├─ licenses: BSD-3-Clause AND MIT
+│  ├─ repository: https://github.com/jrburke/amdefine
+│  ├─ publisher: James Burke
+│  ├─ email: jrburke@gmail.com
+│  ├─ url: http://github.com/jrburke
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/amdefine/LICENSE
+├─ array-flatten@1.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/blakeembrey/array-flatten
+│  ├─ publisher: Blake Embrey
+│  ├─ email: hello@blakeembrey.com
+│  ├─ url: http://blakeembrey.me
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/array-flatten/LICENSE
+├─ asap@1.0.0
+│  ├─ licenses: MIT
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/asap/LICENSE.md
+├─ async@0.2.10
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/caolan/async
+│  ├─ publisher: Caolan McMahon
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/async/LICENSE
+├─ async@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/caolan/async
+│  ├─ publisher: Caolan McMahon
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/winston/node_modules/async/LICENSE
+├─ async@1.5.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/caolan/async
+│  ├─ publisher: Caolan McMahon
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/mongoose/node_modules/async/LICENSE
+├─ basic-auth@1.0.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/basic-auth
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/basic-auth/LICENSE
+├─ bluebird@2.10.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/petkaantonov/bluebird
+│  ├─ publisher: Petka Antonov
+│  ├─ email: petka_antonov@hotmail.com
+│  ├─ url: http://github.com/petkaantonov/
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/bluebird/LICENSE
+├─ body-parser@1.15.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/body-parser
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/body-parser/LICENSE
+├─ bson@0.5.4
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/mongodb/js-bson
+│  ├─ publisher: Christian Amor Kvalheim
+│  ├─ email: christkv@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/bson/LICENSE.md
+├─ buffer-shims@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/calvinmetcalf/buffer-shims
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/buffer-shims/license.md
+├─ bytes@2.4.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/bytes.js
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  ├─ url: http://tjholowaychuk.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/bytes/LICENSE
+├─ camelcase@1.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/camelcase
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: http://sindresorhus.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/camelcase/license
+├─ center-align@0.1.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jonschlinkert/center-align
+│  ├─ publisher: Jon Schlinkert
+│  ├─ url: https://github.com/jonschlinkert
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/center-align/LICENSE
+├─ character-parser@1.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ForbesLindesay/character-parser
+│  ├─ publisher: ForbesLindesay
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/character-parser/LICENSE
+├─ clean-css@3.4.19
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jakubpawlowicz/clean-css
+│  ├─ publisher: Jakub Pawlowicz
+│  ├─ email: contact@jakubpawlowicz.com
+│  ├─ url: http://twitter.com/jakubpawlowicz
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/clean-css/LICENSE
+├─ cliui@2.1.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/bcoe/cliui
+│  ├─ publisher: Ben Coe
+│  ├─ email: ben@npmjs.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/cliui/LICENSE.txt
+├─ colors@1.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/Marak/colors.js
+│  └─ publisher: Marak Squires
+├─ commander@2.6.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/tj/commander.js
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ commander@2.8.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/tj/commander.js
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/clean-css/node_modules/commander/LICENSE
+├─ constantinople@3.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ForbesLindesay/constantinople
+│  ├─ publisher: ForbesLindesay
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/constantinople/LICENSE
+├─ content-disposition@0.5.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/content-disposition
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/content-disposition/LICENSE
+├─ content-type@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/content-type
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/content-type/LICENSE
+├─ cookie-parser@1.4.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/cookie-parser
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  ├─ url: http://tjholowaychuk.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/cookie-parser/LICENSE
+├─ cookie-signature@1.0.6
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/node-cookie-signature
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@learnboost.com
+├─ cookie@0.1.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/cookie
+│  ├─ publisher: Roman Shtylman
+│  ├─ email: shtylman@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/express/node_modules/cookie/LICENSE
+├─ cookie@0.3.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/cookie
+│  ├─ publisher: Roman Shtylman
+│  ├─ email: shtylman@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/cookie/LICENSE
+├─ core-util-is@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/isaacs/core-util-is
+│  ├─ publisher: Isaac Z. Schlueter
+│  ├─ email: i@izs.me
+│  ├─ url: http://blog.izs.me/
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/core-util-is/LICENSE
+├─ css-parse@1.0.4
+│  ├─ licenses: MIT*
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ css-stringify@1.0.5
+│  ├─ licenses: MIT*
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ css@1.0.8
+│  ├─ licenses: MIT*
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ cycle@1.0.3   ************************************ No License *****************************************************
+│  ├─ licenses: UNKNOWN
+│  └─ repository: https://github.com/dscape/cycle
+├─ debug@2.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/visionmedia/debug
+│  ├─ publisher: TJ Holowaychuk
+│  └─ email: tj@vision-media.ca
+├─ decamelize@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/decamelize
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/decamelize/license
+├─ depd@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/dougwilson/nodejs-depd
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/depd/LICENSE
+├─ destroy@1.0.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/stream-utils/destroy
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/destroy/LICENSE
+├─ dscnodes@0.0.0
+│  └─ licenses: UNKNOWN
+├─ ee-first@1.1.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jonathanong/ee-first
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/ee-first/LICENSE
+├─ es6-promise@3.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jakearchibald/ES6-Promises
+│  ├─ publisher: Yehuda Katz, Tom Dale, Stefan Penner and contributors
+│  ├─ url: Conversion to ES6 API by Jake Archibald
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/es6-promise/LICENSE
+├─ escape-html@1.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/component/escape-html
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/escape-html/LICENSE
+├─ etag@1.7.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/etag
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/etag/LICENSE
+├─ eventemitter3@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/primus/eventemitter3
+│  ├─ publisher: Arnout Kazemier
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/eventemitter3/LICENSE
+├─ express@4.13.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/express
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/express/LICENSE
+├─ eyes@0.1.8
+│  ├─ licenses: MIT
+│  ├─ publisher: Alexis Sellier
+│  ├─ email: self@cloudhead.net
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/eyes/LICENSE
+├─ finalhandler@0.4.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/pillarjs/finalhandler
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/finalhandler/LICENSE
+├─ forwarded@0.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/forwarded
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/forwarded/LICENSE
+├─ fresh@0.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/fresh
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  ├─ url: http://tjholowaychuk.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/fresh/LICENSE
+├─ graceful-readlink@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/zhiyelee/graceful-readlink
+│  ├─ publisher: zhiyelee
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/graceful-readlink/LICENSE
+├─ hooks-fixed@1.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/vkarpov15/hooks-fixed
+│  ├─ publisher: Brian Noguchi
+│  ├─ email: brian.noguchi@gmail.com
+│  └─ url: https://github.com/bnoguchi/
+├─ http-errors@1.3.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/http-errors
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/send/node_modules/http-errors/LICENSE
+├─ http-errors@1.5.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/http-errors
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/http-errors/LICENSE
+├─ http-proxy@1.14.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/nodejitsu/node-http-proxy
+│  ├─ publisher: Charlie Robbins
+│  ├─ email: charlie.robbins@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/http-proxy/LICENSE
+├─ iconv-lite@0.4.13
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ashtuchkin/iconv-lite
+│  ├─ publisher: Alexander Shtuchkin
+│  ├─ email: ashtuchkin@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/iconv-lite/LICENSE
+├─ inherits@2.0.1
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/isaacs/inherits
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/inherits/LICENSE
+├─ ipaddr.js@1.0.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/whitequark/ipaddr.js
+│  ├─ publisher: whitequark
+│  ├─ email: whitequark@whitequark.org
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/ipaddr.js/LICENSE
+├─ is-buffer@1.1.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/feross/is-buffer
+│  ├─ publisher: Feross Aboukhadijeh
+│  ├─ email: feross@feross.org
+│  ├─ url: http://feross.org/
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/is-buffer/LICENSE
+├─ is-promise@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/then/is-promise
+│  ├─ publisher: ForbesLindesay
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/transformers/node_modules/is-promise/LICENSE
+├─ is-promise@2.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/then/is-promise
+│  ├─ publisher: ForbesLindesay
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/is-promise/LICENSE
+├─ isarray@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/juliangruber/isarray
+│  ├─ publisher: Julian Gruber
+│  ├─ email: mail@juliangruber.com
+│  └─ url: http://juliangruber.com
+├─ isstream@0.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rvagg/isstream
+│  ├─ publisher: Rod Vagg
+│  ├─ email: rod@vagg.org
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/isstream/LICENSE.md
+├─ jade@1.11.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jadejs/jade
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/jade/LICENSE
+├─ jstransformer@0.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jstransformers/jstransformer
+│  ├─ publisher: ForbesLindesay
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/jstransformer/LICENSE
+├─ kareem@1.1.3
+│  ├─ licenses: Apache 2.0
+│  ├─ repository: https://github.com/vkarpov15/kareem
+│  ├─ publisher: Valeri Karpov
+│  ├─ email: val@karpov.io
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/kareem/LICENSE
+├─ kind-of@3.0.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jonschlinkert/kind-of
+│  ├─ publisher: Jon Schlinkert
+│  ├─ url: https://github.com/jonschlinkert
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/kind-of/LICENSE
+├─ lazy-cache@1.0.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jonschlinkert/lazy-cache
+│  ├─ publisher: Jon Schlinkert
+│  ├─ url: https://github.com/jonschlinkert
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/lazy-cache/LICENSE
+├─ longest@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jonschlinkert/longest
+│  ├─ publisher: Jon Schlinkert
+│  ├─ url: https://github.com/jonschlinkert
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/longest/LICENSE
+├─ media-typer@0.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/media-typer
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/media-typer/LICENSE
+├─ merge-descriptors@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/component/merge-descriptors
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/merge-descriptors/LICENSE
+├─ methods@1.1.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/methods
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/methods/LICENSE
+├─ mime-db@1.23.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/mime-db
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/mime-db/LICENSE
+├─ mime-types@2.1.11
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/mime-types
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/mime-types/LICENSE
+├─ mime@1.3.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/broofa/node-mime
+│  ├─ publisher: Robert Kieffer
+│  ├─ email: robert@broofa.com
+│  ├─ url: http://github.com/broofa
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/mime/LICENSE
+├─ minimist@0.0.8
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/minimist
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/minimist/LICENSE
+├─ mkdirp@0.5.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/node-mkdirp
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/mkdirp/LICENSE
+├─ mongodb-core@2.0.11
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/christkv/mongodb-core
+│  ├─ publisher: Christian Kvalheim
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/mongodb-core/LICENSE
+├─ mongodb@2.2.9
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/mongodb/node-mongodb-native
+│  ├─ publisher: Christian Kvalheim
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/mongodb/LICENSE
+├─ mongoose@4.6.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/Automattic/mongoose
+│  ├─ publisher: Guillermo Rauch
+│  └─ email: guillermo@learnboost.com
+├─ morgan@1.7.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/morgan
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/morgan/LICENSE
+├─ mpath@0.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/mpath
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/mpath/LICENSE
+├─ mpromise@0.5.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/mpromise
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/mpromise/LICENSE
+├─ mquery@1.11.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/mquery
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/mquery/LICENSE
+├─ ms@0.7.1
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/guille/ms.js
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/ms/LICENSE
+├─ muri@1.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/muri
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/muri/LICENSE
+├─ negotiator@0.5.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/negotiator
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/negotiator/LICENSE
+├─ on-finished@2.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/on-finished
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/on-finished/LICENSE
+├─ on-headers@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/on-headers
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/on-headers/LICENSE
+├─ optimist@0.3.7
+│  ├─ licenses: MIT/X11
+│  ├─ repository: https://github.com/substack/node-optimist
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/optimist/LICENSE
+├─ parseurl@1.3.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/pillarjs/parseurl
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/parseurl/LICENSE
+├─ path-to-regexp@0.1.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/component/path-to-regexp
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/path-to-regexp/LICENSE
+├─ pkginfo@0.3.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/indexzero/node-pkginfo
+│  ├─ publisher: Charlie Robbins
+│  ├─ email: charlie.robbins@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/pkginfo/LICENSE
+├─ process-nextick-args@1.0.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/calvinmetcalf/process-nextick-args
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/process-nextick-args/license.md
+├─ promise@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/then/promise
+│  └─ publisher: ForbesLindesay
+├─ promise@6.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/then/promise
+│  ├─ publisher: ForbesLindesay
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/promise/LICENSE
+├─ proxy-addr@1.0.10
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/proxy-addr
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/proxy-addr/LICENSE
+├─ qs@4.0.0
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/hapijs/qs
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/express/node_modules/qs/LICENSE
+├─ qs@6.2.0
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/ljharb/qs
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/qs/LICENSE
+├─ range-parser@1.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/range-parser
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  ├─ url: http://tjholowaychuk.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/range-parser/LICENSE
+├─ raw-body@2.1.7
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/stream-utils/raw-body
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/raw-body/LICENSE
+├─ readable-stream@2.1.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/nodejs/readable-stream
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/readable-stream/LICENSE
+├─ regexp-clone@0.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/regexp-clone
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/regexp-clone/LICENSE
+├─ repeat-string@1.5.4
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jonschlinkert/repeat-string
+│  ├─ publisher: Jon Schlinkert
+│  ├─ url: http://github.com/jonschlinkert
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/repeat-string/LICENSE
+├─ require_optional@1.0.0
+│  ├─ licenses: Apache-2.0
+│  ├─ repository: https://github.com/christkv/require_optional
+│  ├─ publisher: Christian Kvalheim Amor
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/require_optional/LICENSE
+├─ requires-port@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/unshiftio/requires-port
+│  ├─ publisher: Arnout Kazemier
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/requires-port/LICENSE
+├─ resolve-from@2.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/sindresorhus/resolve-from
+│  ├─ publisher: Sindre Sorhus
+│  ├─ email: sindresorhus@gmail.com
+│  ├─ url: sindresorhus.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/resolve-from/license
+├─ right-align@0.1.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jonschlinkert/right-align
+│  ├─ publisher: Jon Schlinkert
+│  ├─ url: https://github.com/jonschlinkert
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/right-align/LICENSE
+├─ semver@5.3.0
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/npm/node-semver
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/semver/LICENSE
+├─ send@0.13.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/pillarjs/send
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/send/LICENSE
+├─ send@0.13.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/pillarjs/send
+│  ├─ publisher: TJ Holowaychuk
+│  ├─ email: tj@vision-media.ca
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/serve-static/node_modules/send/LICENSE
+├─ serve-favicon@2.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/serve-favicon
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/serve-favicon/LICENSE
+├─ serve-static@1.10.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/expressjs/serve-static
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/serve-static/LICENSE
+├─ setprototypeof@1.0.1
+│  ├─ licenses: ISC
+│  ├─ repository: https://github.com/wesleytodd/setprototypeof
+│  ├─ publisher: Wes Todd
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/setprototypeof/LICENSE
+├─ sliced@0.0.5
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/sliced
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/mquery/node_modules/sliced/LICENSE
+├─ sliced@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/aheckmann/sliced
+│  ├─ publisher: Aaron Heckmann
+│  ├─ email: aaron.heckmann+github@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/sliced/LICENSE
+├─ source-map@0.1.43   ************************************Investigate*****************************************************
+│  ├─ licenses: BSD
+│  ├─ repository: https://github.com/mozilla/source-map
+│  ├─ publisher: Nick Fitzgerald
+│  ├─ email: nfitzgerald@mozilla.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/transformers/node_modules/source-map/LICENSE
+├─ source-map@0.4.4 ************************************Investigate*****************************************************
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/mozilla/source-map
+│  ├─ publisher: Nick Fitzgerald
+│  └─ email: nfitzgerald@mozilla.com
+├─ source-map@0.5.6
+│  ├─ licenses: BSD-3-Clause
+│  ├─ repository: https://github.com/mozilla/source-map
+│  ├─ publisher: Nick Fitzgerald
+│  ├─ email: nfitzgerald@mozilla.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/uglify-js/node_modules/source-map/LICENSE
+├─ stack-trace@0.0.9
+│  ├─ licenses: MIT*
+│  ├─ repository: https://github.com/felixge/node-stack-trace
+│  ├─ publisher: Felix Geisendörfer
+│  ├─ email: felix@debuggable.com
+│  ├─ url: http://debuggable.com/
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/stack-trace/License
+├─ statuses@1.2.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/statuses
+│  ├─ publisher: Jonathan Ong
+│  ├─ email: me@jongleberry.com
+│  ├─ url: http://jongleberry.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/send/node_modules/statuses/LICENSE
+├─ statuses@1.3.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/statuses
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/statuses/LICENSE
+├─ string_decoder@0.10.31
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/rvagg/string_decoder
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/string_decoder/LICENSE
+├─ transformers@2.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ForbesLindesay/transformers
+│  └─ publisher: ForbesLindesay
+├─ type-is@1.6.13
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/type-is
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/type-is/LICENSE
+├─ uglify-js@2.2.5   ************************************Investigate*****************************************************
+│  ├─ licenses: UNKNOWN
+│  └─ repository: https://github.com/mishoo/UglifyJS2
+├─ uglify-js@2.7.3
+│  ├─ licenses: BSD-2-Clause
+│  ├─ repository: https://github.com/mishoo/UglifyJS2
+│  ├─ publisher: Mihai Bazon
+│  ├─ email: mihai.bazon@gmail.com
+│  ├─ url: http://lisperator.net/
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/uglify-js/LICENSE
+├─ uglify-to-browserify@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ForbesLindesay/uglify-to-browserify
+│  ├─ publisher: ForbesLindesay
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/uglify-to-browserify/LICENSE
+├─ unpipe@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/stream-utils/unpipe
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/unpipe/LICENSE
+├─ util-deprecate@1.0.2
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/TooTallNate/util-deprecate
+│  ├─ publisher: Nathan Rajlich
+│  ├─ email: nathan@tootallnate.net
+│  ├─ url: http://n8.io/
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/util-deprecate/LICENSE
+├─ utils-merge@1.0.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jaredhanson/utils-merge
+│  ├─ publisher: Jared Hanson
+│  ├─ email: jaredhanson@gmail.com
+│  ├─ url: http://www.jaredhanson.net/
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/utils-merge/LICENSE
+├─ vary@1.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jshttp/vary
+│  ├─ publisher: Douglas Christopher Wilson
+│  ├─ email: doug@somethingdoug.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/vary/LICENSE
+├─ void-elements@2.0.1
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/hemanth/void-elements
+│  ├─ publisher: hemanth.hm
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/void-elements/LICENSE
+├─ window-size@0.1.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/jonschlinkert/window-size
+│  ├─ publisher: Jon Schlinkert
+│  └─ url: https://github.com/jonschlinkert
+├─ winston@2.2.0
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/winstonjs/winston
+│  ├─ publisher: Charlie Robbins
+│  ├─ email: charlie.robbins@gmail.com
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/winston/LICENSE
+├─ with@4.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/ForbesLindesay/with
+│  ├─ publisher: ForbesLindesay
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/with/LICENSE
+├─ wordwrap@0.0.2
+│  ├─ licenses: MIT/X11
+│  ├─ repository: https://github.com/substack/node-wordwrap
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  └─ url: http://substack.net
+├─ wordwrap@0.0.3
+│  ├─ licenses: MIT
+│  ├─ repository: https://github.com/substack/node-wordwrap
+│  ├─ publisher: James Halliday
+│  ├─ email: mail@substack.net
+│  ├─ url: http://substack.net
+│  └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/wordwrap/LICENSE
+└─ yargs@3.10.0
+   ├─ licenses: MIT
+   ├─ repository: https://github.com/bcoe/yargs
+   ├─ publisher: Alex Ford
+   ├─ email: Alex.Ford@CodeTunnel.com
+   ├─ url: http://CodeTunnel.com
+   └─ licenseFile: /Users/markg/git/ossDscServer/sandbox/node_modules/yargs/LICENSE
+

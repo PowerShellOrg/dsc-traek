@@ -1,0 +1,15 @@
+{
+    "ipaddress":"",
+    "port":"7443",
+    "certPaths":{
+        "privateKey":"/data/certs/key.pem",
+        "publicKey":"/data/certs/certificate.pem"
+    },
+    "dataStore":{
+        "type":"fileStore"
+    },
+    "fileStore":{
+        "root":"/Users/markg/dscStore/configurations",
+        "hashAlgorithm":"sha256"
+    }
+}

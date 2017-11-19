@@ -1,0 +1,12 @@
+{
+    "ipaddress":"",
+    "port":"3443",
+    "certPaths":{
+        "privateKey":"/data/certs/key.pem",
+        "publicKey":"/data/certs/certificate.pem"
+    },
+    "dataStore":{
+        "type":"mongoStore",
+        "connectionString":"mongodb://localhost/DscReports"
+    }
+}
