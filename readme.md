@@ -1,6 +1,6 @@
 # DSC-TRÆK
 
-The project dsc-[traek])https://en.m.wiktionary.org/wiki/træk) is an Open Source implementation of a service to host
+The project dsc-[traek](https://en.m.wiktionary.org/wiki/træk) is an Open Source implementation of a service to host
 the Powershell Desired State Configuration (DSC) Pull mode
 [protocol](https://msdn.microsoft.com/en-us/library/dn393548.aspx).
 
